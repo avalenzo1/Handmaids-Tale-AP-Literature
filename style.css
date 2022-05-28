@@ -7,11 +7,11 @@ body {
 }
 
 .nav {
-  dsposition: sticky;
+  position: sticky;
   background-color: #fff;
-  border-bottom: 1px solid;
+  color: #333;
+  border-bottom: 1px solid #efefef;
   padding: 0;
-  color: #efefef;
   z-index: 99;
   left: 0;
   top: 0;
