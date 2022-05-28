@@ -62,13 +62,9 @@ window.onresize = function (e) {
         circle.style.left = x;
         circle.style.top = y;
         circle.classList.add("_ripple");
-
-        console.log(button)  
       
         const _ripple = button.querySelector("._ripple");
       
-        console.log(_ripple)  
-
         if (_ripple) {
             _ripple.remove();
         }

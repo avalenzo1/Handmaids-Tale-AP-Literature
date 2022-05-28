@@ -1,160 +1,154 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 body {
-    color: #000;
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
+  color: #000;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
 }
 
 .nav {
-    background-color: #fff;
-    border-bottom: 1px solid;
-    padding: 0;
-    color: #efefef;
-    z-index: 99;
-    left: 0;
-    top: 0;
-    right: 0;
-
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  dsposition: sticky;
+  background-color: #fff;
+  border-bottom: 1px solid;
+  padding: 0;
+  color: #efefef;
+  z-index: 99;
+  left: 0;
+  top: 0;
+  right: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .nav .list-parent {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-    align-items: baseline;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
 }
 
 .nav .list-parent li {
-	width: 100%;
+  width: 100%;
 }
 
 .nav .list-item {
-    position: relative;
-    border: none;
-    border-radius: 2pt;
-    background-color: #fff;
-    color: #333;
-    text-decoration: none;
-    padding: 15px;
-    display: block;
-    cursor: pointer;
-    text-align: center;
+  position: relative;
+  border: none;
+  border-radius: 2pt;
+  background-color: #fff;
+  color: #333;
+  text-decoration: none;
+  padding: 15px;
+  display: block;
+  cursor: pointer;
+  text-align: center;
 }
 
 .nav .list-item:hover {
-    z-index: 50;
-    background-color: #f1e5ff;
+  z-index: 50;
+  background-color: #f1e5ff;
 }
 
 .nav .dropdown {
-    left: 0;
-    right: 0;
-	position: absolute;
+  left: 0;
+  right: 0;
+  position: absolute;
 }
 
 .nav-toggle {
-	transition: transform 0.3s;    
+  display: none !important;
+  transition: transform 0.3s;
 }
 
 .breathing-right {
-	margin-right: 5px;
+  margin-right: 5px;
 }
 
 .hamburger-icon {
-    position: relative;
+  position: relative;
 }
 
 .hamburger-icon::after {
-    content: "";
-	clear: both;
+  content: "";
+  clear: both;
 }
 
 .hamburger-icon div {
-	  width: 20px;
-    margin-bottom: 3px;
-    background-color: #333;
-    height: 1.5px;
-    transition: opacity 1s, transform 0.3s;
+  width: 20px;
+  margin-bottom: 3px;
+  background-color: #333;
+  height: 1.5px;
+  transition: opacity 1s, transform 0.3s;
 }
 
 .hamburger-icon.active div:nth-child(1) {
-	transform: rotate(-45deg) translateX(-3px) translateY(3px);
-    position: absolute;
+  transform: rotate(-45deg) translateX(-3px) translateY(3px);
+  position: absolute;
 }
 
 .hamburger-icon.active div:nth-child(2) {
-	transform: rotate(45deg) translateX(3px) translateY(3px);
-    
+  transform: rotate(45deg) translateX(3px) translateY(3px);
 }
 
 .hamburger-icon.active div:nth-child(3) {
-	opacity: 0;
-    transform: rotate(45deg) translateX(0px) translateY(0px);
+  opacity: 0;
+  transform: rotate(45deg) translateX(0px) translateY(0px);
 }
 
 @media only screen and (max-width: 600px) {
-    .nav {
-        bottom: 0;
+  .nav {
+    bottom: 0;
+  }
 
-    }
+  .nav .list-parent {
+    flex-direction: column;
+    align-items: stretch;
+  }
 
-    .nav .list-parent {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    
-    .nav .list-item {
-    	text-align: left;
-	}
+  .nav .list-item {
+    text-align: left;
+  }
+
+  .nav-toggle {
+    display: block !important;
+  }
 }
 
 .ripple {
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
 
 ._ripple {
-    position: absolute;
-    /* The absolute position we mentioned earlier */
-    border-radius: 50%;
-    transform: scale(0);
-    padding: 0.5rem;
-    animation: rippleAnim 0.6s forwards;
-    background-color: #7600ff4d;
+  position: absolute;
+  /* The absolute position we mentioned earlier */
+  border-radius: 50%;
+  transform: scale(0);
+  padding: 0.5rem;
+  animation: rippleAnim 0.6s forwards;
+  background-color: #7600ff4d;
 }
 
 @keyframes rippleAnim {
-    0% {
-        opacity: 0;
-        transform: scale(0);
-    }
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
 
-    50% {
-        transform: scale(2);
-        opacity: 1;
-    }
+  50% {
+    transform: scale(2);
+    opacity: 1;
+  }
 
-    100% {
-        transform: scale(0.75);
-        opacity: 0;
-    }
+  100% {
+    transform: scale(0.75);
+    opacity: 0;
+  }
 }
 
-:root {
-        --media-max-width: 600px;
-      }
-
-      .nav {
-        position: sticky;
-      }
-
-      .nav .list-item:focus {
-        box-shadow: 0 0 0 1.5pt #e5cfff;
-        outline: none;
-        transition: 0.1s;
-      }
+.nav .list-item:focus {
+  box-shadow: 0 0 0 1.5pt #e5cfff;
+  outline: none;
+  transition: 0.1s;
+}
