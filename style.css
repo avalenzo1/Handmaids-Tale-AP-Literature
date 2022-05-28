@@ -5,7 +5,8 @@
   --primary-color: #ff003c;
   --primary-color-hsl: 346, 100%, 50%;
   
-  --gutter-x: 25%;
+  --gutter-x: 5%;
+  --gutter-y: 10px;
 }
 
 body {
@@ -17,8 +18,6 @@ body {
 .banner {
   background-color: #ffffff;
   padding: 10px var(--gutter-x);
-  position: relative;
-  z-index: 100;
 }
 
 .nav {
