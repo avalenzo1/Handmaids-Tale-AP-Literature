@@ -45,7 +45,7 @@ window.onresize = function (e) {
 };
 
 // ripple effects
-let ripple = (e) => {
+let ripple_in = (e) => {
   const button = e.currentTarget;
   button.dim = button.getBoundingClientRect();
   const circle = document.createElement("span");
@@ -63,9 +63,9 @@ let ripple = (e) => {
   circle.style.width = circle.style.height = `${diameter}px`;
   circle.style.left = x;
   circle.style.top = y;
-  circle.classList.add("_ripple");
+  circle.classList.add("_ripple--down");
 
-  const _ripple = button.querySelector("._ripple");
+  const _ripple = button.querySelector("._ripple--down");
 
   if (_ripple) {
     _ripple.remove();
@@ -74,8 +74,15 @@ let ripple = (e) => {
   button.appendChild(circle);
 };
 
+let ripple_out = (e) => {
+  const button = e.currentTarget;
+  const _ripple = button.querySelector("._ripple--down");
+  _ripple.classList.add("_ripple--up");
+}
+
 let buttons = document.querySelectorAll(".ripple");
 
 buttons.forEach((button) => {
-  button.addEventListener("click", ripple);
+  button.addEventListener("mousedown", ripple_in);
+  button.addEventListener("mouseup", ripple_out);
 });
