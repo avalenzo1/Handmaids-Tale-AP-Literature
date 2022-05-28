@@ -44,45 +44,43 @@ window.onresize = function (e) {
   }
 };
 
-// ripple effects
-let ripple_in = (e) => {
-  const button = e.currentTarget;
-  button.dim = button.getBoundingClientRect();
-  const circle = document.createElement("span");
-  const diameter = Math.max(button.clientWidth, button.clientHeight);
-  const radius = diameter / 2;
+class Ripple {
+  constructor(e) {
+    this.e = e;
+    this.button = this.e.currentTarget;
+    this.button.dim = this.button.getBoundingClientRect();
 
-  let x = `${e.clientX - button.dim.left - radius}px`;
-  let y = `${e.clientY - button.dim.top - radius}px`;
+    this.circle = document.createElement("span");
+    this.diameter = Math.max(this.button.clientWidth, this.button.clientHeight);
+    this.radius = this.diameter / 2;
 
-  if (e.clientX === 0 && e.clientY === 0) {
-    x = `${button.dim.width / 2 - radius}px`;
-    y = `${button.dim.height / 2 - radius}px`;
+    this.x = `${this.e.clientX - this.button.dim.left - this.radius}px`;
+    this.y = `${this.e.clientY - this.button.dim.top - this.radius}px`;
+
+    if (e.clientX === 0 && e.clientY === 0) {
+      this.x = `${this.button.dim.width / 2 - this.radius}px`;
+      this.y = `${this.button.dim.height / 2 - this.radius}px`;
+    }
+
+    this.circle.style.width = this.circle.style.height = `${this.diameter}px`;
+    this.circle.style.left = this.x;
+    this.circle.style.top = this.y;
+    this.circle.classList.add("_ripple");
+
+    this._ripple = this.button.querySelector("._ripple");
+
+    if (this._ripple) {
+      this._ripple.remove();
+    }
+
+    this.button.appendChild(this.circle);
   }
-
-  circle.style.width = circle.style.height = `${diameter}px`;
-  circle.style.left = x;
-  circle.style.top = y;
-  circle.classList.add("_ripple--down");
-
-  const _ripple = button.querySelector("._ripple--down");
-
-  if (_ripple) {
-    _ripple.remove();
-  }
-
-  button.appendChild(circle);
-};
-
-let ripple_out = (e) => {
-  const button = e.currentTarget;
-  const _ripple = button.querySelector("._ripple--down");
-  _ripple.classList.add("_ripple--up");
 }
 
 let buttons = document.querySelectorAll(".ripple");
 
 buttons.forEach((button) => {
-  button.addEventListener("mousedown", ripple_in);
-  button.addEventListener("mouseup", ripple_out);
+  button.addEventListener("mousedown", (e) => {
+    new Ripple(e);
+  });
 });
