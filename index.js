@@ -39,41 +39,43 @@ window.onresize = function (e) {
 
   if (w <= 600) {
     nav.style.top = 0 + "px";
+  } else {
+    navItems.style.display = "flex";
   }
 };
 
 // ripple effects
-    let ripple = (e) => {
-        const button = e.currentTarget;
-        button.dim = button.getBoundingClientRect();
-        const circle = document.createElement("span");
-        const diameter = Math.max(button.clientWidth, button.clientHeight);
-        const radius = diameter / 2;
+let ripple = (e) => {
+  const button = e.currentTarget;
+  button.dim = button.getBoundingClientRect();
+  const circle = document.createElement("span");
+  const diameter = Math.max(button.clientWidth, button.clientHeight);
+  const radius = diameter / 2;
 
-        let x = `${e.clientX - button.dim.left - radius}px`;
-        let y = `${e.clientY - button.dim.top - radius}px`;
+  let x = `${e.clientX - button.dim.left - radius}px`;
+  let y = `${e.clientY - button.dim.top - radius}px`;
 
-        if (e.clientX === 0 && e.clientY === 0) {
-            x = `${button.dim.width / 2 - radius}px`;
-            y = `${button.dim.height / 2 - radius}px`;
-        }
+  if (e.clientX === 0 && e.clientY === 0) {
+    x = `${button.dim.width / 2 - radius}px`;
+    y = `${button.dim.height / 2 - radius}px`;
+  }
 
-        circle.style.width = circle.style.height = `${diameter}px`;
-        circle.style.left = x;
-        circle.style.top = y;
-        circle.classList.add("_ripple");
-      
-        const _ripple = button.querySelector("._ripple");
-      
-        if (_ripple) {
-            _ripple.remove();
-        }
+  circle.style.width = circle.style.height = `${diameter}px`;
+  circle.style.left = x;
+  circle.style.top = y;
+  circle.classList.add("_ripple");
 
-        button.appendChild(circle);
-    };
+  const _ripple = button.querySelector("._ripple");
 
-    let buttons = document.querySelectorAll(".ripple");
+  if (_ripple) {
+    _ripple.remove();
+  }
 
-    buttons.forEach((button) => {
-        button.addEventListener("click", ripple);
-    });
+  button.appendChild(circle);
+};
+
+let buttons = document.querySelectorAll(".ripple");
+
+buttons.forEach((button) => {
+  button.addEventListener("click", ripple);
+});

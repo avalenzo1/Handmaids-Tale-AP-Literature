@@ -4,18 +4,27 @@
 :root {
   --primary-color: #ff003c;
   --primary-color-hsl: 346, 100%, 50%;
+  
+  --gutter-x: 25%;
 }
 
 body {
-  color: #000;
+  color: #000000;
   margin: 0;
   font-family: "Roboto", sans-serif;
 }
 
+.banner {
+  background-color: #ffffff;
+  padding: 10px var(--gutter-x);
+  position: relative;
+  z-index: 100;
+}
+
 .nav {
   position: sticky;
-  background-color: #fff;
-  color: #333;
+  background-color: #ffffff;
+  color: #333333;
   border-bottom: 1px solid #efefef;
   padding: 0;
   z-index: 99;
@@ -42,8 +51,8 @@ body {
   position: relative;
   border: none;
   border-radius: 2pt;
-  background-color: #fff;
-  color: #333;
+  background-color: #ffffff;
+  color: #333333;
   text-decoration: none;
   padding: 15px;
   display: block;
@@ -89,7 +98,7 @@ body {
 .hamburger-icon div {
   width: 20px;
   margin-bottom: 3px;
-  background-color: #333;
+  background-color: #333333;
   height: 1.5px;
   transition: opacity 1s, transform 0.3s;
 }
