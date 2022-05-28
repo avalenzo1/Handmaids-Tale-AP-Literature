@@ -45,7 +45,7 @@ window.onresize = function(e) {
 
 // ripple effects
 
-let buttons = document.querySelectorAll("button.ripple");
+let buttons = document.querySelectorAll(".ripple");
 
 let _ripple = (event) => {
     const button = event.currentTarget;
