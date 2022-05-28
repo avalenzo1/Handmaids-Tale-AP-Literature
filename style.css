@@ -75,7 +75,7 @@ body {
 }
 
 .hamburger-icon div {
-	width: 20px;
+	  width: 20px;
     margin-bottom: 3px;
     background-color: #333;
     height: 1.5px;
@@ -125,7 +125,7 @@ body {
     transform: scale(0);
     padding: 0.5rem;
     animation: rippleAnim 0.6s forwards;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: #7600ff4d;
 }
 
 @keyframes rippleAnim {

@@ -4,70 +4,76 @@ let navToggle = document.querySelector(".nav-toggle");
 let navItems = document.querySelector(".nav-items");
 let hamburgerIcon = document.querySelector(".hamburger-icon");
 
-navToggle.addEventListener('click', function(e) {
-    if (navItems.style.display === 'none') {
-		navItems.style.display = 'flex';
-        hamburgerIcon.classList.add("active");
-    } else {
-		navItems.style.display = 'none';
-        hamburgerIcon.classList.remove("active");
-    }
-    
-    nav.style.top = 0 + 'px';
+navToggle.addEventListener("click", function (e) {
+  if (navItems.style.display === "none") {
+    navItems.style.display = "flex";
+    hamburgerIcon.classList.add("active");
+  } else {
+    navItems.style.display = "none";
+    hamburgerIcon.classList.remove("active");
+  }
+
+  nav.style.top = 0 + "px";
 });
 
-window.onscroll = function(e) {
-    this.dim = nav.getBoundingClientRect();
+window.onscroll = function (e) {
+  this.dim = nav.getBoundingClientRect();
 
-    nav.style.top = this.dim.top - (this.scrollY - this.oldScroll) + 'px';
+  nav.style.top = this.dim.top - (this.scrollY - this.oldScroll) + "px";
 
-    if (this.oldScroll > this.scrollY) {
-        if (this.dim.top >= 0) {
-            nav.style.top = 0 + 'px';
-        }
-    } else {
-        if (this.dim.top <= -this.dim.height) {
-            nav.style.top = -this.dim.height + 'px';
-        }
+  if (this.oldScroll > this.scrollY) {
+    if (this.dim.top >= 0) {
+      nav.style.top = 0 + "px";
     }
+  } else {
+    if (this.dim.top <= -this.dim.height) {
+      nav.style.top = -this.dim.height + "px";
+    }
+  }
 
-    this.oldScroll = this.scrollY;
+  this.oldScroll = this.scrollY;
 };
 
-window.onresize = function(e) {
-	    
-    let w = document.body.clientWidth;
-    
-    if (w <= 600) {
-    	nav.style.top = 0 + 'px';
-    }
+window.onresize = function (e) {
+  let w = document.body.clientWidth;
+
+  if (w <= 600) {
+    nav.style.top = 0 + "px";
+  }
 };
 
 // ripple effects
+    let ripple = (e) => {
+        const button = e.currentTarget;
+        button.dim = button.getBoundingClientRect();
+        const circle = document.createElement("span");
+        const diameter = Math.max(button.clientWidth, button.clientHeight);
+        const radius = diameter / 2;
 
-let buttons = document.querySelectorAll(".ripple");
+        let x = `${e.clientX - button.dim.left - radius}px`;
+        let y = `${e.clientY - button.dim.top - radius}px`;
 
-let _ripple = (event) => {
-    const button = event.currentTarget;
+        if (e.clientX === 0 && e.clientY === 0) {
+            x = `${button.dim.width / 2 - radius}px`;
+            y = `${button.dim.height / 2 - radius}px`;
+        }
 
-    const circle = document.createElement("span");
-    const diameter = Math.max(button.clientWidth, button.clientHeight);
-    const radius = diameter / 2;
+        circle.style.width = circle.style.height = `${diameter}px`;
+        circle.style.left = x;
+        circle.style.top = y;
+        circle.classList.add("_ripple");
 
-    circle.style.width = circle.style.height = `${diameter}px`;
-    circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
-    circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
-    circle.classList.add("_ripple");
+        const _ripple = button.getElementsByClassName("_ripple")[0];
 
-    const ripple = button.getElementsByClassName("_ripple")[0];
+        if (_ripple) {
+            _ripple.remove();
+        }
 
-    if (ripple) {
-        ripple.remove();
-    }
+        button.appendChild(circle);
+    };
 
-    button.appendChild(circle);
-};
+    let buttons = document.querySelectorAll(".ripple");
 
-buttons.forEach((button) => {
-    button.addEventListener("click", _ripple);
-});
+    buttons.forEach((button) => {
+        button.addEventListener("click", ripple);
+    });
