@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("/normalize.css");
 
-//
+:root {
+  --primary-color: #ff003c;
+  --primary-color-hsl: 346, 100%, 50%;
+}
 
 body {
   color: #000;
@@ -49,7 +53,13 @@ body {
 
 .nav .list-item:hover {
   z-index: 50;
-  background-color: #f1e5ff;
+  background-color: hsla(var(--primary-color-hsl), 0.1);
+}
+
+.nav .list-item:focus {
+  box-shadow: 0 0 0 1.5pt hsla(var(--primary-color-hsl), 0.35);
+  outline: none;
+  transition: 0.1s;
 }
 
 .nav .dropdown {
@@ -129,7 +139,7 @@ body {
   transform: scale(0);
   padding: 0.5rem;
   animation: rippleAnim 0.6s forwards;
-  background-color: #7600ff4d;
+  background-color: hsla(var(--primary-color-hsl), 0.3);
 }
 
 @keyframes rippleAnim {
@@ -147,10 +157,4 @@ body {
     transform: scale(0.75);
     opacity: 0;
   }
-}
-
-.nav .list-item:focus {
-  box-shadow: 0 0 0 1.5pt #e5cfff;
-  outline: none;
-  transition: 0.1s;
 }
