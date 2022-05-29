@@ -119,9 +119,9 @@ buttons.forEach((button) => {
 
 // checks for dark mode
 
-let Scheme = (function() {
+let Scheme = (function () {
   function getScheme() {
-    if (['light', 'dark'].indexOf(localStorage.getItem("theme-mode")) > -1) {
+    if (["light", "dark"].indexOf(localStorage.getItem("theme-mode")) > -1) {
       return localStorage.getItem("theme-mode");
     } else {
       if (window.matchMedia) {
@@ -141,7 +141,7 @@ let Scheme = (function() {
   function setScheme(color) {
     localStorage.setItem("theme-mode", color);
 
-    if (getScheme() === 'dark') {
+    if (getScheme() === "dark") {
       let stylesheet = document.createElement("link");
       stylesheet.setAttribute("href", "dark.css");
       stylesheet.setAttribute("type", "text/css");
@@ -150,30 +150,43 @@ let Scheme = (function() {
       document.head.append(stylesheet);
     }
 
-    if (getScheme() === 'light') {
+    if (getScheme() === "light") {
       let stylesheet = document.getElementById("dark-mode");
+      
+      console.log(stylesheet)
 
       if (stylesheet) {
-        stylesheet.delete();
+        stylesheet.remove();
       }
     }
   }
 
   setScheme(getScheme());
+
+  let colorSchemeInput = document.getElementById("colorSchemeInput");
+  let colorSchemeButton = document.getElementById("colorSchemeButton");
+  let icon = colorSchemeButton.querySelector(".fa-solid");
   
+  if (colorSchemeInput.checked) {
+    icon.classList.add("fa-moon");
+  } else {
+    icon.classList.add("fa-sun");
+  }
+
+  colorSchemeButton.addEventListener("click", function () {
+    if (colorSchemeInput.checked) {
+      icon.classList.add("fa-sun");
+      icon.classList.remove("fa-moon");
+      setScheme("light");
+    } else {
+      icon.classList.remove("fa-sun");
+      icon.classList.add("fa-moon");
+      setScheme("dark");
+    }
+  });
+
   return {
     getScheme,
-    setScheme
-  }
+    setScheme,
+  };
 })();
-
-let checkBoxScheme = document.getElementById("colorSchemeInput");
-let colorSchemeButton = document.getElementById("colorSchemeButton");
-
-colorSchemeButton.addEventListener(function() {
-  if (checkBoxScheme.checked) {
-    colorSchemeButton.innerHTML = '<i class="fa-solid fa-sun"></i>';
-  } else {
-    colorSchemeButton.innerHTML = '<i class="fa-solid fa-moon"></i>';
-  }
-});
