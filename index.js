@@ -117,13 +117,23 @@ buttons.forEach((button) => {
 
 // checks for dark mode
 
-if (
-  window.matchMedia &&
-  window.matchMedia("(prefers-color-scheme: dark)").matches
-) {
-  let darkMode = document.createElement("link");
-  darkMode.setAttribute("href", "dark.css")
-  darkMode.setAttribute("type", "text/css")
-  darkMode.setAttribute("rel", "stylesheet");
-  document.head.append(darkMode);
+function calcThemeMode () {
+  if (window.matchMedia) {
+    if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+      return true;
+    }
+    
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return false;
+    }
+  } else {
+    return true;
+  }
 }
+
+let theme = localStorage.get("theme-mode");
+
+if (theme === null) {
+  localStorage.set("theme-mode", calcThemeMode());
+}
+
