@@ -83,6 +83,8 @@ class Ripple {
   }
 
   rippleEnter(e) {
+    this.getRipplesNotLeave();
+    
     this.dim = this.calcDim();
     this.circle = document.createElement("span");
     this.diameter = Math.max(this.button.clientWidth, this.button.clientHeight);
@@ -104,16 +106,19 @@ class Ripple {
     this.circle.classList.add("_ripple--enter");
     this.button.appendChild(this.circle);
   }
-
+  
   rippleLeave(e) {
+    this.getRipplesNotLeave();
+    this.removeRipples();
+  }
+  
+  getRipplesNotLeave() {
     let ripples = this.button.querySelectorAll(
       "._ripple--enter:not(._ripple--leave)"
     );
     ripples.forEach((ripple) => {
       ripple.classList.add("_ripple--leave");
     });
-
-    this.removeRipples();
   }
 
   calcDim() {
@@ -137,7 +142,7 @@ buttons.forEach((button) => {
   new Ripple(button);
 });
 
-// checks for dark mode
+// Light ☀ / Dark 🌙 Mode Function
 
 let Scheme = (function () {
   function getScheme() {
@@ -212,3 +217,14 @@ let Scheme = (function () {
     setScheme,
   };
 })();
+
+let $artifactListItems = $(".list-item.artifact");
+let $artifactHeadings = $(".heading-main");
+
+$artifactListItems.mouseenter(function(e) {
+  $(".heading-main").text($(this).text());
+});
+
+$artifactListItems.mouseleave(function(e) {
+  $(".heading-main").text("$(this).text()");
+});
