@@ -119,43 +119,51 @@ buttons.forEach((button) => {
 
 // checks for dark mode
 
-// let Scheme = (function() {
-function getScheme() {
-  return localStorage.getItem("theme-mode");
-}
+let Scheme = (function() {
+  function getScheme() {
+    if (['light', 'dark'].indexOf(localStorage.getItem("theme-mode")) > -1) {
+      return localStorage.getItem("theme-mode");
+    } else {
+      if (window.matchMedia) {
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
+        }
 
-function setScheme(color) {
-  localStorage.setItem("theme-mode", color);
-  
-  if (getScheme() === 'dark') {
-    let stylesheet = document.createElement("link");
-    stylesheet.setAttribute("href", "dark.css");
-    stylesheet.setAttribute("type", "text/css");
-    stylesheet.setAttribute("id", "dark-mode");
-    stylesheet.setAttribute("rel", "stylesheet");
-    document.head.append(stylesheet);
+        if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+          return "light";
+        }
+      } else {
+        return "light";
+      }
+    }
   }
-  
-  if (getScheme() === 'light') {
-    
-  }
-}
 
-function getColorScheme() {
-  if (window.matchMedia) {
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      return "dark";
+  function setScheme(color) {
+    localStorage.setItem("theme-mode", color);
+
+    if (getScheme() === 'dark') {
+      let stylesheet = document.createElement("link");
+      stylesheet.setAttribute("href", "dark.css");
+      stylesheet.setAttribute("type", "text/css");
+      stylesheet.setAttribute("id", "dark-mode");
+      stylesheet.setAttribute("rel", "stylesheet");
+      document.head.append(stylesheet);
     }
 
-    if (window.matchMedia("(prefers-color-scheme: light)").matches) {
-      return "light";
-    }
-  } else {
-    return "dark";
-  }
-}
+    if (getScheme() === 'light') {
+      let stylesheet = document.getElementById("dark-mode");
 
-if (getScheme() === null) {
-  setScheme(getColorScheme());
-}
-// })();
+      if (stylesheet) {
+        stylesheet.delete();
+      }
+    }
+  }
+
+  setScheme(getScheme());
+  
+  return {
+    getScheme,
+    setScheme
+  }
+})();
+
