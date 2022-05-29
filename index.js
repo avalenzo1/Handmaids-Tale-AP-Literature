@@ -70,26 +70,21 @@ class Ripple {
       this.circle.style.left = this.x;
       this.circle.style.top = this.y;
       this.circle.classList.add("_ripple");
-      this.button.appendChild(this.circle);
-      
       this.removeRipples();
+      this.button.appendChild(this.circle);
     });
   }
-
+  
   calcDim() {
     return this.button.getBoundingClientRect();
   }
 
   removeRipples() {
-    let ripples = this.button.querySelectorAll("._ripple");
+    this._ripple = this.button.querySelector("._ripple");
     
-    setTimeout(function() {
-      this._ripple = ripples;
-
-      if (this._ripple) {
-        this._ripple.remove();
-      }
-    }, this.rippleFadeDelay);
+    if (this._ripple) {
+      this._ripple.remove();
+    }
   }
 }
 
