@@ -80,7 +80,7 @@ class Ripple {
 let buttons = document.querySelectorAll(".ripple");
 
 buttons.forEach((button) => {
-  button.addEventListener("mousedown", (e) => {
+  button.addEventListener("click", (e) => {
     new Ripple(e);
   });
 });
