@@ -49,7 +49,7 @@ class Ripple {
     this.button = button;
     this.rippleFadeDelay = 600;
 
-    button.addEventListener("click", (e) => {
+    button.addEventListener("mousedown", (e) => {
       this.dim = this.calcDim();
       this.circle = document.createElement("span");
       this.diameter = Math.max(
@@ -60,6 +60,8 @@ class Ripple {
 
       this.x = `${e.clientX - this.dim.left - this.radius}px`;
       this.y = `${e.clientY - this.dim.top - this.radius}px`;
+      this.centerX = `${this.dim.width / 2}px`;
+      this.centerY = `${this.dim.height / 2}px`;
 
       if (e.clientX === 0 && e.clientY === 0) {
         this.x = `${this.dim.width / 2 - this.radius}px`;
@@ -70,8 +72,9 @@ class Ripple {
       this.circle.style.left = this.x;
       this.circle.style.top = this.y;
       this.circle.classList.add("_ripple");
-      this.removeRipples();
       this.button.appendChild(this.circle);
+      
+      this.removeRipples();
     });
   }
   
@@ -80,11 +83,13 @@ class Ripple {
   }
 
   removeRipples() {
-    this._ripple = this.button.querySelector("._ripple");
+    this.ripples = this.button.querySelectorAll("._ripple");
     
-    if (this._ripple) {
-      this._ripple.remove();
-    }
+    this.ripples.forEach((ripple) => {
+      ripple.addEventListener("animationend", function() {
+        ripple.remove();
+      });
+    });
   }
 }
 
