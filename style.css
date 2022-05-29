@@ -189,22 +189,24 @@ body {
 
 .colorSchemeRadio {
   display: inline-block !important;
-  position: relative;
+  padding: 0 !important;
+  position: relative !important;
 }
 
-#colorSchemeRadio:checked + .colorSchemeRadio {
-  background-color: #ffffff;
-}
-
-.colorSchemeRadio .on {
-  position: absolute;
-  background-color: #ddd;
-}
-
-.colorSchemeRadio .off {
-  position: absolute;
-  left: 0;
-  right: 0;
+/* #colorSchemeRadio:checked + .colorSchemeRadio {
   
-  background-color: #ccc;
+} */
+
+.colorSchemeRadio .innerBubble {
+  left: 0;
+  padding: 15px;
+  display: block;
+}
+
+.colorSchemeRadio .moon {
+  background-color: #dddddd;
+}
+
+.colorSchemeRadio .sun {
+  background-color: #ccdddc;
 }
