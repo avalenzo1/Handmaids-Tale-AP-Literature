@@ -39,12 +39,25 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+.nav .inline-list-parent {
+  justify-content: space-between !important;
+  flex-direction: row !important;
+}
+
+.nav .inline-list-parent li {
+  width: fit-content !important;
+}
+
+.nav .inline-list-parent .list-item {
+  
+}
+
 .nav .list-parent {
   margin: 0;
   padding: 0;
   list-style: none;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: baseline;
 }
 
@@ -185,10 +198,6 @@ body {
 
 #colorSchemeInput {
   display: none;
-}
-
-#colorSchemeButton {
-  display: inline-block !important;
 }
 
 .loader {
