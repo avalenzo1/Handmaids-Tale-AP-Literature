@@ -56,6 +56,10 @@ class Ripple {
     button.addEventListener("mouseup", (e) => {
       this.rippleLeave(e);
     });
+    
+    button.addEventListener("mouseleave", (e) => {
+      this.rippleLeave(e);
+    });
   }
 
   rippleEnter(e) {
@@ -64,8 +68,8 @@ class Ripple {
     this.diameter = Math.max(this.button.clientWidth, this.button.clientHeight);
     this.radius = this.diameter / 2;
 
-    this.x = `${e.clientX - this.dim.left - this.radius}px`;
-    this.y = `${e.clientY - this.dim.top - this.radius}px`;
+    this.x = `${e.clientX - this.dim.left.toFixed(0) - this.radius}px`;
+    this.y = `${e.clientY - this.dim.top.toFixed(0) - this.radius}px`;
     this.centerX = `${this.dim.width / 2}px`;
     this.centerY = `${this.dim.height / 2}px`;
 
@@ -83,8 +87,10 @@ class Ripple {
 
   rippleLeave(e) {
     let ripples = this.button.querySelectorAll("._ripple--enter");
-    ripples[ripples.length-1].classList.add("_ripple--leave");
-    
+    if (ripples[ripples.length-1]) {
+      ripples[ripples.length - 1].classList.add("_ripple--leave");
+    }
+
     this.removeRipples();
   }
 

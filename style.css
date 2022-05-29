@@ -83,6 +83,7 @@ body {
 .nav-toggle {
   display: none !important;
   transition: transform 0.3s;
+  height: 45px;
 }
 
 .breathing-right {
