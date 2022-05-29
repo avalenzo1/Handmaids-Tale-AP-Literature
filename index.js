@@ -86,10 +86,10 @@ class Ripple {
   }
 
   rippleLeave(e) {
-    let ripples = this.button.querySelectorAll("._ripple--enter");
-    if (ripples[ripples.length-1]) {
-      ripples[ripples.length - 1].classList.add("_ripple--leave");
-    }
+    let ripples = this.button.querySelectorAll("._ripple--enter:not(._ripple--leave)");
+    ripples.forEach((ripple) => {
+      ripple.classList.add("_ripple--leave");
+    })
 
     this.removeRipples();
   }
