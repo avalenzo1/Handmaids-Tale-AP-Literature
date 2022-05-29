@@ -56,7 +56,7 @@ class Ripple {
     button.addEventListener("mouseup", (e) => {
       this.rippleLeave(e);
     });
-    
+
     button.addEventListener("mouseleave", (e) => {
       this.rippleLeave(e);
     });
@@ -86,10 +86,12 @@ class Ripple {
   }
 
   rippleLeave(e) {
-    let ripples = this.button.querySelectorAll("._ripple--enter:not(._ripple--leave)");
+    let ripples = this.button.querySelectorAll(
+      "._ripple--enter:not(._ripple--leave)"
+    );
     ripples.forEach((ripple) => {
       ripple.classList.add("_ripple--leave");
-    })
+    });
 
     this.removeRipples();
   }
@@ -117,57 +119,43 @@ buttons.forEach((button) => {
 
 // checks for dark mode
 
-let Scheme = (function() {
-  function getScheme() {
-    return localStorage.getItem("theme-mode");
+// let Scheme = (function() {
+function getScheme() {
+  return localStorage.getItem("theme-mode");
+}
+
+function setScheme(color) {
+  localStorage.setItem("theme-mode", color);
+  
+  if (getScheme() === 'dark') {
+    let stylesheet = document.createElement("link");
+    stylesheet.setAttribute("href", "dark.css");
+    stylesheet.setAttribute("type", "text/css");
+    stylesheet.setAttribute("id", "dark-mode");
+    stylesheet.setAttribute("rel", "stylesheet");
+    document.head.append(stylesheet);
   }
   
-  function setScheme(color) {
-    localStorage.setItem("theme-mode", color);
-    
-    if (color) {
-      let darkMode = document.getElementById("dark-mode");
-      
-      if (darkMode) {
-        darkMode.remove();
-      }
-    } else {
-      let darkMode = document.createElement("link");
-      darkMode.setAttribute("href", "dark.css")
-      darkMode.setAttribute("type", "text/css")
-      darkMode.setAttribute("id", "dark-mode")
-      darkMode.setAttribute("rel", "stylesheet");
-      document.head.append(darkMode);
-    }
-  }
-
-  function isLightMode() {
-    if (window.matchMedia) {
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        return false;
-      }
-
-      if (window.matchMedia("(prefers-color-scheme: light)").matches) {
-        return true;
-      }
-    } else {
-      return true;
-    }
-    
-    if (getScheme() === null) {
-      setScheme(isLightMode());
-    }
-  }
-  
-  return {
+  if (getScheme() === 'light') {
     
   }
-})();
+}
 
-Scheme.getScheme();
+function getColorScheme() {
+  if (window.matchMedia) {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "dark";
+    }
 
+    if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+      return "light";
+    }
+  } else {
+    return "dark";
+  }
+}
 
-
-
-
-
+if (getScheme() === null) {
+  setScheme(getColorScheme());
+}
+// })();
