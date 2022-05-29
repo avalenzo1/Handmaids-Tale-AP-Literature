@@ -50,6 +50,7 @@ class Ripple {
     this.button = this.e.currentTarget;
     this.button.dim = this.button.getBoundingClientRect();
 
+    this.rippleFadeDelay = 600;
     this.circle = document.createElement("span");
     this.diameter = Math.max(this.button.clientWidth, this.button.clientHeight);
     this.radius = this.diameter / 2;
@@ -67,13 +68,16 @@ class Ripple {
     this.circle.style.top = this.y;
     this.circle.classList.add("_ripple");
 
-    this._ripple = this.button.querySelector("._ripple");
-
-    if (this._ripple) {
-      this._ripple.remove();
-    }
-
     this.button.appendChild(this.circle);
+    
+    
+    setTimeout(function() {
+      this._ripple = this.button.querySelector("._ripple");
+      console.log(this.button)
+      if (this._ripple) {
+        this._ripple.remove();
+      }
+    }, 600);
   }
 }
 
