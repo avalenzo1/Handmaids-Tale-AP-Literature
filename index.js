@@ -165,6 +165,10 @@ let Scheme = (function () {
   let colorSchemeButton = document.getElementById("colorSchemeButton");
   let icon = colorSchemeButton.querySelector(".fa-solid");
   
+  if (getScheme() === 'dark') {
+    colorSchemeInput.checked = true;
+  }
+  
   if (colorSchemeInput.checked) {
     icon.classList.add("fa-sun");
   } else {
