@@ -45,53 +45,60 @@ window.onresize = function (e) {
 };
 
 class Ripple {
-  constructor(e) {
-    this.e = e;
-    this.button = this.e.currentTarget;
-    this.button.dim = this.button.getBoundingClientRect();
-
+  constructor(button) {
+    this.button = button;
     this.rippleFadeDelay = 600;
-    this.circle = document.createElement("span");
-    this.diameter = Math.max(this.button.clientWidth, this.button.clientHeight);
-    this.radius = this.diameter / 2;
 
-    this.x = `${this.e.clientX - this.button.dim.left - this.radius}px`;
-    this.y = `${this.e.clientY - this.button.dim.top - this.radius}px`;
+    button.addEventListener("click", (e) => {
+      this.dim = this.calcDim();
+      this.circle = document.createElement("span");
+      this.diameter = Math.max(
+        this.button.clientWidth,
+        this.button.clientHeight
+      );
+      this.radius = this.diameter / 2;
 
-    if (e.clientX === 0 && e.clientY === 0) {
-      this.x = `${this.button.dim.width / 2 - this.radius}px`;
-      this.y = `${this.button.dim.height / 2 - this.radius}px`;
-    }
+      this.x = `${e.clientX - this.dim.left - this.radius}px`;
+      this.y = `${e.clientY - this.dim.top - this.radius}px`;
 
-    this.circle.style.width = this.circle.style.height = `${this.diameter}px`;
-    this.circle.style.left = this.x;
-    this.circle.style.top = this.y;
-    this.circle.classList.add("_ripple");
-
-    this.button.appendChild(this.circle);
-    
-    
-    setTimeout(function() {
-      this._ripple = this.button.querySelector("._ripple");
-      console.log(this.button)
-      if (this._ripple) {
-        this._ripple.remove();
+      if (e.clientX === 0 && e.clientY === 0) {
+        this.x = `${this.dim.width / 2 - this.radius}px`;
+        this.y = `${this.dim.height / 2 - this.radius}px`;
       }
-    }, 600);
+
+      this.circle.style.width = this.circle.style.height = `${this.diameter}px`;
+      this.circle.style.left = this.x;
+      this.circle.style.top = this.y;
+      this.circle.classList.add("_ripple");
+      this.button.appendChild(this.circle);
+      
+      this.removeRipples();
+    });
+  }
+  
+  calcDim() {
+    return this.button.getBoundingClientRect();
+  }
+
+  removeRipples() {
+    setTimeout() {
+      
+    }
   }
 }
 
 let buttons = document.querySelectorAll(".ripple");
 
 buttons.forEach((button) => {
-  button.addEventListener("click", (e) => {
-    new Ripple(e);
-  });
+  new Ripple(button);
 });
 
 // checks for dark mode
 
-if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+if (
+  window.matchMedia &&
+  window.matchMedia("(prefers-color-scheme: dark)").matches
+) {
   // let darkMode = document.createElement("link");
   // darkMode.setAttribute("href", "dark.css")
   // darkMode.setAttribute("type", "text/css")
