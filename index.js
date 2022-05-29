@@ -121,9 +121,9 @@ if (
   window.matchMedia &&
   window.matchMedia("(prefers-color-scheme: dark)").matches
 ) {
-  // let darkMode = document.createElement("link");
-  // darkMode.setAttribute("href", "dark.css")
-  // darkMode.setAttribute("type", "text/css")
-  // darkMode.setAttribute("rel", "stylesheet");
-  // document.head.append(darkMode);
+  let darkMode = document.createElement("link");
+  darkMode.setAttribute("href", "dark.css")
+  darkMode.setAttribute("type", "text/css")
+  darkMode.setAttribute("rel", "stylesheet");
+  document.head.append(darkMode);
 }
