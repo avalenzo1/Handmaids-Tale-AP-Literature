@@ -4,6 +4,26 @@ let navToggle = document.querySelector(".nav-toggle");
 let navItems = document.querySelector(".nav-items");
 let hamburgerIcon = document.querySelector(".hamburger-icon");
 
+let on;
+        
+if (navigator.userAgentData.mobile) {
+  on = {
+      down: "touchstart",
+      up: "touchend",
+      move: "touchmove",
+      enter: "touchenter",
+      leave: "touchleave"
+    }
+} else {
+  on = {
+      down: "mousedown",
+      up: "mouseup",
+      move: "mousemove",
+      enter: "mouseenter",
+      leave: "mouseleave"
+    }
+}
+
 navToggle.addEventListener("click", function (e) {
   if (navItems.style.display === "none") {
     navItems.style.display = "flex";
