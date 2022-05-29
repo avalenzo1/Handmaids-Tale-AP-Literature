@@ -49,7 +49,20 @@ class Ripple {
     this.button = button;
     this.rippleFadeDelay = 600;
 
-    button.addEventListener("click", (e) => {
+    button.addEventListener("mousedown", (e) => {
+      this.rippleEnter(e);
+    });
+    
+    button.addEventListener("mouseup", (e) => {
+      this.rippleLeave(e);
+    });
+  }
+
+  calcDim() {
+    return this.button.getBoundingClientRect();
+  }
+  
+  rippleEnter(e) {
       this.dim = this.calcDim();
       this.circle = document.createElement("span");
       this.diameter = Math.max(
@@ -69,18 +82,13 @@ class Ripple {
       this.circle.style.width = this.circle.style.height = `${this.diameter}px`;
       this.circle.style.left = this.x;
       this.circle.style.top = this.y;
-      this.circle.classList.add("_ripple");
-      this.removeRipples();
+      this.circle.classList.add("_ripple--enter");
       this.button.appendChild(this.circle);
-    });
-  }
-
-  calcDim() {
-    return this.button.getBoundingClientRect();
   }
 
   removeRipples() {
-    let ripples = this.button.querySelector("._ripple");
+    let ripples = this.button.querySelectorAll("._ripple");
+    
     setTimeout(function() {
       this._ripple = ripples;
 
