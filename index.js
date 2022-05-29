@@ -167,3 +167,13 @@ let Scheme = (function() {
   }
 })();
 
+let checkBoxScheme = document.getElementById("colorSchemeInput");
+let colorSchemeButton = document.getElementById("colorSchemeButton");
+
+colorSchemeButton.addEventListener(function() {
+  if (checkBoxScheme.checked) {
+    colorSchemeButton.innerHTML = '<i class="fa-solid fa-sun"></i>';
+  } else {
+    colorSchemeButton.innerHTML = '<i class="fa-solid fa-moon"></i>';
+  }
+});

@@ -183,29 +183,24 @@ body {
   }
 }
 
-#colorSchemeRadio {
+#colorSchemeInput {
   display: none;
 }
 
-.colorSchemeRadio {
+#colorSchemeButton {
   display: inline-block !important;
-  padding: 0 !important;
-  position: relative !important;
 }
 
-/* #colorSchemeRadio:checked + .colorSchemeRadio {
-  
-} */
-
-.colorSchemeRadio .innerBubble {
-  padding: 15px;
-  display: block;
+.loader {
+  border: 1.5px solid transparent;
+  border-top: 1.5px solid var(--text-color);
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  animation: spin 0.5s linear infinite;
 }
 
-.colorSchemeRadio .moon {
-  background-color: #dddddd;
-}
-
-.colorSchemeRadio .sun {
-  background-color: #ccdddc;
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
