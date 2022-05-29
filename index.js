@@ -117,23 +117,33 @@ buttons.forEach((button) => {
 
 // checks for dark mode
 
-function calcThemeMode () {
+let themeMode = ()
+function getTheme() {
+  return localStorage.getItem("theme-mode");
+}
+
+function isLightMode() {
   if (window.matchMedia) {
-    if (window.matchMedia("(prefers-color-scheme: light)").matches) {
-      return true;
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "false";
     }
     
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      return false;
+    if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+      return true;
     }
   } else {
     return true;
   }
 }
-
-let theme = localStorage.get("theme-mode");
-
-if (theme === null) {
-  localStorage.set("theme-mode", calcThemeMode());
+if (getTheme() === null) {
+  localStorage.setItem("theme-mode", isLightMode());
+  
+  console.log(theme);
 }
+
+
+
+
+
+
 

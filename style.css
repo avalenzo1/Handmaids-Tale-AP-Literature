@@ -71,6 +71,7 @@ body {
 
 .nav .list-item:focus {
   box-shadow: 0 0 0 1pt hsla(var(--primary-color-hsl), 0.35);
+  z-index: 50;
   outline: none;
   transition: 0.1s;
 }
