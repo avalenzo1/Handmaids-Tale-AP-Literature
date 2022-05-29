@@ -2,6 +2,10 @@
 @import url("/normalize.css");
 
 :root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --text-color-secondary: #333333;
+  
   --primary-color: #ff003c;
   --primary-color-hsl: 346, 100%, 50%;
   
@@ -10,20 +14,21 @@
 }
 
 body {
-  color: #000000;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   margin: 0;
   font-family: "Roboto", sans-serif;
 }
 
 .banner {
-  background-color: #ffffff;
+  background-color: var(--text-color);
   padding: 10px var(--gutter-x);
 }
 
 .nav {
   position: sticky;
-  background-color: #ffffff;
-  color: #333333;
+  background-color: var(--bg-color);
+  color: var(--text-color-secondary);
   border-bottom: 1px solid #efefef;
   padding: 0;
   z-index: 99;
@@ -49,8 +54,8 @@ body {
 .nav .list-item {
   border: 0;
   position: relative;
-  background-color: #ffffff;
-  color: #333333;
+  background-color: var(--bg-color);
+  color: var(--text-color-secondary);
   text-decoration: none;
   padding: 15px;
   display: block;
@@ -96,7 +101,7 @@ body {
 .hamburger-icon div {
   width: 20px;
   margin-bottom: 3px;
-  background-color: #333333;
+  background-color: var(--text-color-secondary);
   height: 1.5px;
   transition: opacity 1s, transform 0.3s;
 }
