@@ -70,20 +70,24 @@ class Ripple {
       this.circle.style.left = this.x;
       this.circle.style.top = this.y;
       this.circle.classList.add("_ripple");
-      this.button.appendChild(this.circle);
-      
       this.removeRipples();
+      this.button.appendChild(this.circle);
     });
   }
-  
+
   calcDim() {
     return this.button.getBoundingClientRect();
   }
 
   removeRipples() {
-    setTimeout() {
-      
-    }
+    let ripples = this.button.querySelector("._ripple");
+    setTimeout(function() {
+      this._ripple = ripples;
+
+      if (this._ripple) {
+        this._ripple.remove();
+      }
+    }, this.rippleFadeDelay);
   }
 }
 
