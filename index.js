@@ -152,8 +152,6 @@ let Scheme = (function () {
 
     if (getScheme() === "light") {
       let stylesheet = document.getElementById("dark-mode");
-      
-      console.log(stylesheet)
 
       if (stylesheet) {
         stylesheet.remove();
@@ -168,19 +166,19 @@ let Scheme = (function () {
   let icon = colorSchemeButton.querySelector(".fa-solid");
   
   if (colorSchemeInput.checked) {
-    icon.classList.add("fa-moon");
-  } else {
     icon.classList.add("fa-sun");
+  } else {
+    icon.classList.add("fa-moon");
   }
 
   colorSchemeButton.addEventListener("click", function () {
     if (colorSchemeInput.checked) {
-      icon.classList.add("fa-sun");
-      icon.classList.remove("fa-moon");
+      icon.classList.add("fa-moon");
+      icon.classList.remove("fa-sun");
       setScheme("light");
     } else {
-      icon.classList.remove("fa-sun");
-      icon.classList.add("fa-moon");
+      icon.classList.remove("fa-moon");
+      icon.classList.add("fa-sun");
       setScheme("dark");
     }
   });
