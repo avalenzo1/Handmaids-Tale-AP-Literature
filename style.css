@@ -182,3 +182,29 @@ body {
     opacity: 0;
   }
 }
+
+#colorSchemeRadio {
+  display: none;
+}
+
+.colorSchemeRadio {
+  display: inline-block !important;
+  position: relative;
+}
+
+#colorSchemeRadio:checked + .colorSchemeRadio {
+  background-color: #ffffff;
+}
+
+.colorSchemeRadio .on {
+  position: absolute;
+  background-color: #ddd;
+}
+
+.colorSchemeRadio .off {
+  position: absolute;
+  left: 0;
+  right: 0;
+  
+  background-color: #ccc;
+}
