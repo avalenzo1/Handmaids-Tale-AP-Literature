@@ -218,13 +218,26 @@ let Scheme = (function () {
   };
 })();
 
-let $artifactListItems = $(".list-item.artifact");
-let $artifactHeadings = $(".heading-main");
+let activeArtifact;
 
-$artifactListItems.mouseenter(function(e) {
-  $(".heading-main").text($(this).text());
+$(".list-item.artifact").hover(function() {
+  $(".heading-main").html(`${$(this).text()} <i class="fa-solid fa-angles-down"></i>`);
 });
 
-$artifactListItems.mouseleave(function(e) {
-  $(".heading-main").text("$(this).text()");
+$(".list-item.artifact").focus(function() {
+  $(".heading-main").html(`${$(this).text()} <i class="fa-solid fa-angles-down"></i>`);
+});
+
+$(".list-item.artifact").click(function() {
+  activeArtifact = `${$(this).text()} <i class="fa-solid fa-angles-down"></i>`;
+});
+
+$(".list-item.artifact").mouseleave(function() {
+  if (activeArtifact) {
+    $(".heading-main").html(activeArtifact);
+  } else {
+    $(".heading-main").html(`Select an Artifact <i class="fa-solid fa-angles-up"></i>`); 
+  }
+  
+  $(".heading-main").html(activeArtifact);
 });
