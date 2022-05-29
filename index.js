@@ -82,18 +82,22 @@ class Ripple {
       this.circle.style.width = this.circle.style.height = `${this.diameter}px`;
       this.circle.style.left = this.x;
       this.circle.style.top = this.y;
-      this.circle.classList.add("_ripple--enter");
+      this.circle.classList.add("_ripple");
       this.button.appendChild(this.circle);
+  }
+  
+  rippleLeave() {
+    this.removeRipples();
   }
 
   removeRipples() {
-    let ripples = this.button.querySelectorAll("._ripple");
+    let ripple = this.button.querySelector("._ripple");
     
     setTimeout(function() {
-      this._ripple = ripples;
-
-      if (this._ripple) {
-        this._ripple.remove();
+      
+      
+      if (ripple) {
+        ripple.remove();
       }
     }, this.rippleFadeDelay);
   }
