@@ -47,6 +47,7 @@ body {
 }
 
 .nav .list-item {
+  border: 0;
   position: relative;
   background-color: #ffffff;
   color: #333333;

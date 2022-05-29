@@ -84,3 +84,13 @@ buttons.forEach((button) => {
     new Ripple(e);
   });
 });
+
+// checks for dark mode
+
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  let style = document.createElement("link");
+  style.setAttribute("href", "dark.css")
+       .setAttribute("type", "text/css")
+       .setAttribute("rel", "stylesheet");
+  document.head.append()
+}
