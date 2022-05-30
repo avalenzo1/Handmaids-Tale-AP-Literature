@@ -71,6 +71,8 @@ class Ripple {
     this.rippleColor = JSON.parse(this.button.getAttribute("ripple-hsl"));
 
     if (this.rippleColor) {
+      // https://stackoverflow.com/a/11371599/16557976  -- Thanks! 🙏
+      
       let css = `
         .ripple[ripple-hsl="[${this.rippleColor[0]}, ${this.rippleColor[1]}, ${this.rippleColor[2]}]"]:hover {
           background-color: hsla(${this.rippleColor[0]}, ${this.rippleColor[1]}%, ${this.rippleColor[2]}%,0.1) !important;
@@ -80,6 +82,7 @@ class Ripple {
           box-shadow: 0 0 0 1pt hsla(${this.rippleColor[0]}, ${this.rippleColor[1]}%, ${this.rippleColor[2]}%, 0.35) !important;
         }
       `;
+      
       let style = document.createElement("style");
 
       if (style.styleSheet) {
