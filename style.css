@@ -26,6 +26,11 @@ body {
   transition: background-color 0.2s;
 }
 
+.gutter-x {
+  padding-left: var(--gutter-x);
+  padding-right: var(--gutter-x);
+}
+
 .banner {
   background-color: var(--bg-color);
   padding: 10px var(--gutter-x);
@@ -227,6 +232,14 @@ label.colorSchemeButton {
 }
 
 .alert {
+  display: flex;
+  align-items: center;
+  
+  gap: 10px;
   padding: 20px;
-  border: solid 1px #000000;
+  border: solid 1px;
+}
+
+.alert-icon {
+   font-size: x-large; 
 }
