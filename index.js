@@ -84,9 +84,9 @@ class Ripple {
 
   rippleEnter(e) {
     this.getRipplesNotLeave();
-    
-    this.clientX = (e.clientX) ? e.clientX : e.touches[0].clientX;
-    this.clientY = (e.clientY) ? e.clientY : e.touches[0].clientY;
+
+    this.clientX = e.clientX ? e.clientX : e.touches[0].clientX;
+    this.clientY = e.clientY ? e.clientY : e.touches[0].clientY;
 
     this.dim = this.calcDim();
     this.circle = document.createElement("span");
@@ -221,43 +221,9 @@ let Scheme = (function () {
   };
 })();
 
-new TypeIt(".heading-main", { 
-    lifeLike: false, 
-    speed: 0 
+new TypeIt("#heading-main", {
+  speed: 80,
+  startDelay: 900,
 })
-	.type("S")
-	.pause(220)
-	.type("e")
-	.pause(170)
-	.type("l")
-	.pause(112)
-	.type("e")
-	.pause(194)
-	.type("c")
-	.pause(257)
-	.type("t")
-	.pause(226)
-	.type(" ")
-	.pause(182)
-	.type("a")
-	.pause(419)
-	.type("n")
-	.pause(182)
-	.type(" ")
-	.pause(144)
-	.type("A")
-	.pause(209)
-	.type("r")
-	.pause(264)
-	.type("t")
-	.pause(94)
-	.type("i")
-	.pause(232)
-	.type("f")
-	.pause(105)
-	.type("a")
-	.pause(110)
-	.type("c")
-	.pause(292)
-	.type("t")
-	.go();
+  .type("Select an Artifact", { delay: 100 })
+  .go();
