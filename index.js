@@ -225,5 +225,7 @@ new TypeIt("#heading-main", {
   speed: 80,
   startDelay: 900,
 })
-  .type("Select an Artifact", { delay: 100 })
+  .type("Select an Artifact.", { delay: 500 })
+  .delete("Select an Artifact", { delay: 2000 })
+  .type(`<span style="color: var(--primary-color)">Resist.</span>`, { delay: 1000 })
   .go();

@@ -29,7 +29,7 @@ body {
 .banner {
   background-color: var(--bg-color);
   padding: 10px var(--gutter-x);
-  color: var(--primary-color);
+  color: var(--text-color);
   text-align: center;
 }
 
