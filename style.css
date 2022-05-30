@@ -203,6 +203,10 @@ body {
   display: none;
 }
 
+#colorSchemeInput[type=checkbox]:checked + label.colorSchemeButton {
+  background-color: 
+} 
+
 .loader {
   display: inline-block;
   border: var(--loader-diam) solid transparent;
