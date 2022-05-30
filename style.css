@@ -1,14 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&display=swap");
 @import url("/normalize.css");
+
+/* https://www.reddit.com/r/TheHandmaidsTale/comments/gmqryp/no_spoiler_blessed_be_the_fruit_hi_everyone_i_was/ */
 
 :root {
   --bg-color: #ffffff;
   --text-color: #000000;
   --text-color-secondary: #333333;
-  
-  --primary-color: #ff003c;
-  --primary-color-hsl: 346, 100%, 50%;
-  
+
+  --primary-color: #b61b1f;
+  --primary-color-hsl: 358.45, 74%, 41%;
+
   --gutter-x: 5%;
   --gutter-y: 10px;
 }
@@ -17,13 +19,14 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   margin: 0;
-  font-family: 'Tiro Devanagari Sanskrit', serif;
+  font-family: "Tiro Devanagari Sanskrit", serif;
   transition: background-color 0.2s;
 }
 
 .banner {
   background-color: var(--bg-color);
   padding: 10px var(--gutter-x);
+  color: var(--primary-color-hsl);
   text-align: center;
 }
 
@@ -47,10 +50,6 @@ body {
 
 .nav .inline-list-parent li {
   width: fit-content !important;
-}
-
-.nav .inline-list-parent .list-item {
-  
 }
 
 .nav .list-parent {
@@ -211,6 +210,10 @@ body {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
