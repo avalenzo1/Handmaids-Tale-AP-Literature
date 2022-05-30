@@ -70,8 +70,6 @@ class Ripple {
     this.rippleFadeDelay = 600;
 
     this.button.addEventListener(on.down, (e) => {
-      e.clientX = (e.clientX) ? e.clientX : e.touches[0].clientX;
-      e.clientY = (e.clientY) ? e.clientY : e.touches[0].clientY;
       this.rippleEnter(e);
     });
 
@@ -86,18 +84,21 @@ class Ripple {
 
   rippleEnter(e) {
     this.getRipplesNotLeave();
+    
+    this.clientX = (e.clientX) ? e.clientX : e.touches[0].clientX;
+    this.clientY = (e.clientY) ? e.clientY : e.touches[0].clientY;
 
     this.dim = this.calcDim();
     this.circle = document.createElement("span");
     this.diameter = Math.max(this.button.clientWidth, this.button.clientHeight);
     this.radius = this.diameter / 2;
 
-    this.x = `${e.clientX - this.dim.left.toFixed(0) - this.radius}px`;
-    this.y = `${e.clientY - this.dim.top.toFixed(0) - this.radius}px`;
+    this.x = `${this.clientX - this.dim.left.toFixed(0) - this.radius}px`;
+    this.y = `${this.clientY - this.dim.top.toFixed(0) - this.radius}px`;
     this.centerX = `${this.dim.width / 2}px`;
     this.centerY = `${this.dim.height / 2}px`;
 
-    if (e.clientX === 0 && e.clientY === 0) {
+    if (this.clientX === 0 && this.clientY === 0) {
       this.x = `${this.dim.width / 2 - this.radius}px`;
       this.y = `${this.dim.height / 2 - this.radius}px`;
     }
@@ -220,32 +221,43 @@ let Scheme = (function () {
   };
 })();
 
-let activeArtifact;
-
-$(".list-item.artifact").hover(function () {
-  $(".heading-main").html(
-    `${$(this).text()} <i class="fa-solid fa-angles-down"></i>`
-  );
-});
-
-$(".list-item.artifact").focus(function () {
-  $(".heading-main").html(
-    `${$(this).text()} <i class="fa-solid fa-angles-down"></i>`
-  );
-});
-
-$(".list-item.artifact").click(function () {
-  activeArtifact = `${$(this).text()} <i class="fa-solid fa-angles-down"></i>`;
-});
-
-$(".list-item.artifact").mouseleave(function () {
-  if (activeArtifact) {
-    $(".heading-main").html(activeArtifact);
-  } else {
-    $(".heading-main").html(
-      `Select an Artifact <i class="fa-solid fa-angles-up"></i>`
-    );
-  }
-
-  $(".heading-main").html(activeArtifact);
-});
+new TypeIt(".heading-main", { 
+    lifeLike: false, 
+    speed: 0 
+})
+	.type("S")
+	.pause(220)
+	.type("e")
+	.pause(170)
+	.type("l")
+	.pause(112)
+	.type("e")
+	.pause(194)
+	.type("c")
+	.pause(257)
+	.type("t")
+	.pause(226)
+	.type(" ")
+	.pause(182)
+	.type("a")
+	.pause(419)
+	.type("n")
+	.pause(182)
+	.type(" ")
+	.pause(144)
+	.type("A")
+	.pause(209)
+	.type("r")
+	.pause(264)
+	.type("t")
+	.pause(94)
+	.type("i")
+	.pause(232)
+	.type("f")
+	.pause(105)
+	.type("a")
+	.pause(110)
+	.type("c")
+	.pause(292)
+	.type("t")
+	.go();
