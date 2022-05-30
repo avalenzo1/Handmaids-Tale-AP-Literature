@@ -67,25 +67,30 @@ window.onresize = function (e) {
 class Ripple {
   constructor(button) {
     this.button = button;
-    
-    this.rippleColor = JSON.parse(this.button.getAttribute('ripple-hsl'));
-    
+
+    this.rippleColor = JSON.parse(this.button.getAttribute("ripple-hsl"));
+
     if (this.rippleColor) {
       let css = `
-        .ripple[ripple-hsl="[${this.rippleColor[0]}, ${this.rippleColor[1]}, ${this.rippleColor[2]}]"]:hover { background-color: hsla(${this.rippleColor[0]}, ${this.rippleColor[1]}, ${this.rippleColor[2]},0.1); }
-        .ripple[ripple-hsl="[${this.rippleColor[0]}, ${this.rippleColor[1]}, ${this.rippleColor[2]}]":focus { box-shadow: 0 0 0 1pt hsla(${this.rippleColor[0]}, ${this.rippleColor[1]}, ${this.rippleColor[2]}, 0.35); }
+        .ripple[ripple-hsl="[${this.rippleColor[0]}, ${this.rippleColor[1]}, ${this.rippleColor[2]}]"]:hover {
+          background-color: hsla(${this.rippleColor[0]}, ${this.rippleColor[1]}%, ${this.rippleColor[2]}%,0.1) !important;
+        }
+        
+        .ripple[ripple-hsl="[${this.rippleColor[0]}, ${this.rippleColor[1]}, ${this.rippleColor[2]}]"]:focus {
+          box-shadow: 0 0 0 1pt hsla(${this.rippleColor[0]}, ${this.rippleColor[1]}%, ${this.rippleColor[2]}%, 0.35) !important;
+        }
       `;
-      let style = document.createElement('style');
+      let style = document.createElement("style");
 
       if (style.styleSheet) {
-          style.styleSheet.cssText = css;
+        style.styleSheet.cssText = css;
       } else {
-          style.appendChild(document.createTextNode(css));
+        style.appendChild(document.createTextNode(css));
       }
 
-      document.getElementsByTagName('head')[0].appendChild(style);
+      document.getElementsByTagName("head")[0].appendChild(style);
     }
-    
+
     this.rippleFadeDelay = 600;
 
     this.button.addEventListener(on.down, (e) => {
@@ -126,11 +131,11 @@ class Ripple {
     this.circle.style.left = this.x;
     this.circle.style.top = this.y;
     this.circle.classList.add("_ripple--enter");
-    
+
     if (this.rippleColor) {
-      this.circle.style.backgroundColor = `hsla(${this.rippleColor[0]}, ${this.rippleColor[1]}%, ${this.rippleColor[2]}%, 0.3)`; 
+      this.circle.style.backgroundColor = `hsla(${this.rippleColor[0]}, ${this.rippleColor[1]}%, ${this.rippleColor[2]}%, 0.3)`;
     }
-    
+
     this.button.appendChild(this.circle);
   }
 
@@ -251,5 +256,7 @@ new TypeIt("#heading-main", {
 })
   .type("Select an Artifact.", { delay: 500 })
   .delete("Select an Artifact", { delay: 2000 })
-  .type(`<span style="color: var(--primary-color)">Resist.</span>`, { delay: 1000 })
+  .type(`<span style="color: var(--primary-color)">Resist.</span>`, {
+    delay: 1000,
+  })
   .go();
