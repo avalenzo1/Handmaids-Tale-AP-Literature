@@ -69,6 +69,23 @@ class Ripple {
     this.button = button;
     
     this.rippleColor = JSON.parse(this.button.getAttribute('ripple-hsl'));
+    
+    if (this.rippleColor) {
+      let css = `
+        .ripple[ripple-hsl="[${this.rippleColor[0]}, ${this.rippleColor[1]}, ${this.rippleColor[2]}]"]:hover { background-color: hsla(${this.rippleColor[0]}, ${this.rippleColor[1]}, ${this.rippleColor[2]},0.1); }
+        .ripple[ripple-hsl="[${this.rippleColor[0]}, ${this.rippleColor[1]}, ${this.rippleColor[2]}]":focus { box-shadow: 0 0 0 1pt hsla(${this.rippleColor[0]}, ${this.rippleColor[1]}, ${this.rippleColor[2]}, 0.35); }
+      `;
+      let style = document.createElement('style');
+
+      if (style.styleSheet) {
+          style.styleSheet.cssText = css;
+      } else {
+          style.appendChild(document.createTextNode(css));
+      }
+
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+    
     this.rippleFadeDelay = 600;
 
     this.button.addEventListener(on.down, (e) => {
@@ -111,7 +128,6 @@ class Ripple {
     this.circle.classList.add("_ripple--enter");
     
     if (this.rippleColor) {
-      console.log(`background-color: hsla(${this.rippleColor[0]}, ${this.rippleColor[1]}%, ${this.rippleColor[2]}%, 0.3)`)
       this.circle.style.backgroundColor = `hsla(${this.rippleColor[0]}, ${this.rippleColor[1]}%, ${this.rippleColor[2]}%, 0.3)`; 
     }
     
