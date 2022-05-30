@@ -69,9 +69,6 @@ class Ripple {
     this.button = button;
     
     this.rippleColor = JSON.parse(this.button.getAttribute('ripple-hsl'));
-    
-    
-    
     this.rippleFadeDelay = 600;
 
     this.button.addEventListener(on.down, (e) => {
@@ -114,7 +111,8 @@ class Ripple {
     this.circle.classList.add("_ripple--enter");
     
     if (this.rippleColor) {
-      this.circle.style = `background-color: hsla(${this.rippleColor[0]}, ${this.rippleColor[1]}%, ${this.rippleColor[2]}%, 0.3);`; 
+      console.log(`background-color: hsla(${this.rippleColor[0]}, ${this.rippleColor[1]}%, ${this.rippleColor[2]}%, 0.3)`)
+      this.circle.style.backgroundColor = `hsla(${this.rippleColor[0]}, ${this.rippleColor[1]}%, ${this.rippleColor[2]}%, 0.3)`; 
     }
     
     this.button.appendChild(this.circle);
