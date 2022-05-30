@@ -67,6 +67,11 @@ window.onresize = function (e) {
 class Ripple {
   constructor(button) {
     this.button = button;
+    
+    this.rippleColor = JSON.parse(this.button.getAttribute('ripple-hsl'));
+    
+    
+    
     this.rippleFadeDelay = 600;
 
     this.button.addEventListener(on.down, (e) => {
@@ -107,6 +112,11 @@ class Ripple {
     this.circle.style.left = this.x;
     this.circle.style.top = this.y;
     this.circle.classList.add("_ripple--enter");
+    
+    if (this.rippleColor) {
+      this.circle.style = `background-color: hsla(${this.rippleColor[0]}, ${this.rippleColor[1]}%, ${this.rippleColor[2]}%, 0.3);`; 
+    }
+    
     this.button.appendChild(this.circle);
   }
 
