@@ -203,9 +203,9 @@ body {
   display: none;
 }
 
-#colorSchemeInput[type=checkbox]:checked + label.colorSchemeButton {
-  background-color: 
-} 
+label.colorSchemeButton {
+  color: #ffa500 !important;
+}
 
 .loader {
   display: inline-block;
