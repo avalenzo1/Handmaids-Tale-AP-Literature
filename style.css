@@ -225,3 +225,8 @@ label.colorSchemeButton {
     transform: rotate(360deg);
   }
 }
+
+.alert {
+  padding: 20px;
+  border: solid 1px #000000;
+}
