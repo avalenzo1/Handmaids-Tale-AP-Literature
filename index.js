@@ -5,23 +5,23 @@ let navItems = document.querySelector(".nav-items");
 let hamburgerIcon = document.querySelector(".hamburger-icon");
 
 let on;
-        
+
 if (navigator.userAgentData.mobile) {
   on = {
-      down: "touchstart",
-      up: "touchend",
-      move: "touchmove",
-      enter: "touchenter",
-      leave: "touchleave"
-    }
+    down: "touchstart",
+    up: "touchend",
+    move: "touchmove",
+    enter: "touchenter",
+    leave: "touchleave",
+  };
 } else {
   on = {
-      down: "mousedown",
-      up: "mouseup",
-      move: "mousemove",
-      enter: "mouseenter",
-      leave: "mouseleave"
-    }
+    down: "mousedown",
+    up: "mouseup",
+    move: "mousemove",
+    enter: "mouseenter",
+    leave: "mouseleave",
+  };
 }
 
 navToggle.addEventListener("click", function (e) {
@@ -69,22 +69,24 @@ class Ripple {
     this.button = button;
     this.rippleFadeDelay = 600;
 
-    button.addEventListener("mousedown", (e) => {
+    this.button.addEventListener(on.down, (e) => {
+      e.clientX = (e.clientX) ? e.clientX : e.touches[0].clientX;
+      e.clientY = (e.clientY) ? e.clientY : e.touches[0].clientY;
       this.rippleEnter(e);
     });
 
-    button.addEventListener("mouseup", (e) => {
+    this.button.addEventListener(on.up, (e) => {
       this.rippleLeave(e);
     });
 
-    button.addEventListener("mouseleave", (e) => {
+    this.button.addEventListener(on.leave, (e) => {
       this.rippleLeave(e);
     });
   }
 
   rippleEnter(e) {
     this.getRipplesNotLeave();
-    
+
     this.dim = this.calcDim();
     this.circle = document.createElement("span");
     this.diameter = Math.max(this.button.clientWidth, this.button.clientHeight);
@@ -106,12 +108,12 @@ class Ripple {
     this.circle.classList.add("_ripple--enter");
     this.button.appendChild(this.circle);
   }
-  
+
   rippleLeave(e) {
     this.getRipplesNotLeave();
     this.removeRipples();
   }
-  
+
   getRipplesNotLeave() {
     let ripples = this.button.querySelectorAll(
       "._ripple--enter:not(._ripple--leave)"
@@ -189,11 +191,11 @@ let Scheme = (function () {
   let colorSchemeInput = document.getElementById("colorSchemeInput");
   let colorSchemeButton = document.getElementById("colorSchemeButton");
   let icon = colorSchemeButton.querySelector(".fa-solid");
-  
-  if (getScheme() === 'dark') {
+
+  if (getScheme() === "dark") {
     colorSchemeInput.checked = true;
   }
-  
+
   if (colorSchemeInput.checked) {
     icon.classList.add("fa-sun");
   } else {
@@ -220,24 +222,30 @@ let Scheme = (function () {
 
 let activeArtifact;
 
-$(".list-item.artifact").hover(function() {
-  $(".heading-main").html(`${$(this).text()} <i class="fa-solid fa-angles-down"></i>`);
+$(".list-item.artifact").hover(function () {
+  $(".heading-main").html(
+    `${$(this).text()} <i class="fa-solid fa-angles-down"></i>`
+  );
 });
 
-$(".list-item.artifact").focus(function() {
-  $(".heading-main").html(`${$(this).text()} <i class="fa-solid fa-angles-down"></i>`);
+$(".list-item.artifact").focus(function () {
+  $(".heading-main").html(
+    `${$(this).text()} <i class="fa-solid fa-angles-down"></i>`
+  );
 });
 
-$(".list-item.artifact").click(function() {
+$(".list-item.artifact").click(function () {
   activeArtifact = `${$(this).text()} <i class="fa-solid fa-angles-down"></i>`;
 });
 
-$(".list-item.artifact").mouseleave(function() {
+$(".list-item.artifact").mouseleave(function () {
   if (activeArtifact) {
     $(".heading-main").html(activeArtifact);
   } else {
-    $(".heading-main").html(`Select an Artifact <i class="fa-solid fa-angles-up"></i>`); 
+    $(".heading-main").html(
+      `Select an Artifact <i class="fa-solid fa-angles-up"></i>`
+    );
   }
-  
+
   $(".heading-main").html(activeArtifact);
 });

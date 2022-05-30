@@ -18,6 +18,7 @@ body {
   color: var(--text-color);
   margin: 0;
   font-family: 'Tiro Devanagari Sanskrit', serif;
+  transition: background-color 0.2s;
 }
 
 .banner {
