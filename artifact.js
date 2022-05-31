@@ -22,11 +22,12 @@ $.ajax({
 });
 
 if (window.location.hash) {
-  console.log("hello");
+  let newURL = window.location.hash.replace("/^#!\/$/i", "");
+  console.log(newURL);
 } else {
-  console.log("nothing");
+  
 }
 
 addEventListener("hashchange", function (e) {
-  console.log("hello");
+  
 });
