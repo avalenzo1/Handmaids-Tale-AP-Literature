@@ -265,7 +265,7 @@ new TypeIt("#heading-main", {
 })
   .type("Select an Artifact.", { delay: 500 })
   .delete("Select an Artifact", { delay: 2000 })
-  .type(`<span style="color: var(--primary-color)">Resist.</span>`, {
+  .type(`<span style="color: var(--primary-color); font-weight: 100;">Resist.</span>`, {
     delay: 1000,
   })
   .go();
