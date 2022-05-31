@@ -5,10 +5,10 @@ if (location.protocol != "https:") {
     "https:" + window.location.href.substring(window.location.protocol.length);
 }
 
-let on;
+let agentOn;
 
 if (navigator.userAgentData.mobile) {
-  on = {
+  agentOn = {
     down: "touchstart",
     up: "touchend",
     move: "touchmove",
@@ -16,7 +16,7 @@ if (navigator.userAgentData.mobile) {
     leave: "touchleave",
   };
 } else {
-  on = {
+  agentOn = {
     down: "mousedown",
     up: "mouseup",
     move: "mousemove",
@@ -102,15 +102,15 @@ class Ripple {
 
     this.rippleFadeDelay = 600;
 
-    this.button.addEventListener(on.down, (e) => {
+    this.button.addEventListener(agentOn.down, (e) => {
       this.rippleEnter(e);
     });
 
-    this.button.addEventListener(on.up, (e) => {
+    this.button.addEventListener(agentOn.up, (e) => {
       this.rippleLeave(e);
     });
 
-    this.button.addEventListener(on.leave, (e) => {
+    this.button.addEventListener(agentOn.leave, (e) => {
       this.rippleLeave(e);
     });
   }
