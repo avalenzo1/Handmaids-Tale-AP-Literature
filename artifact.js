@@ -3,6 +3,8 @@ $("#app").hide();
 $(function(){
   // artifact
   
+  $()
+  
   function redirectPage() {
     if (window.location.hash) {
       $("#app").show();
