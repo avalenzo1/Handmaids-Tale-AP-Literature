@@ -1,10 +1,10 @@
-$("#app").html(`<div class="loader"></div>`);
-
 $(function(){
   // artifact
   
   function redirectPage() {
     if (window.location.hash) {
+      $("#app").html(`<div class="loader"></div>`);
+      
       let hashRegexPath = window.location.hash.replace("#!/app/", "");
       let urlRedirect = new URL('https://handmaids-tale-project.glitch.me/' + hashRegexPath);
       
@@ -32,5 +32,8 @@ $(function(){
   }
 
   redirectPage();
-  $(window).on("hashchange", redirectPage());
+  
+  window.addEventListener("hashchange", function() {
+    redirectPage()
+  });
 });
