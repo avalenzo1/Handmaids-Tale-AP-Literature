@@ -1,8 +1,9 @@
-let nav = document.querySelector("#nav");
-let coordinates = document.querySelector("#coordinates");
-let navToggle = document.querySelector(".nav-toggle");
-let navItems = document.querySelector(".nav-items");
-let hamburgerIcon = document.querySelector(".hamburger-icon");
+// https://support.glitch.com/t/tutorial-how-to-force-https/16669/2
+
+if (location.protocol != 'https:')
+{
+ location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+}
 
 let on;
 
@@ -24,13 +25,13 @@ if (navigator.userAgentData.mobile) {
   };
 }
 
-navToggle.addEventListener("click", function (e) {
-  if (navItems.style.display === "none") {
-    navItems.style.display = "flex";
-    hamburgerIcon.classList.add("active");
+$(".nav-toggle").click(function (e) {
+  if ($(".nav-items").is(":hidden")) {
+    $(".nav-items").css("display", "flex");
+    $(".hamburger-icon").addClass("active");
   } else {
-    navItems.style.display = "none";
-    hamburgerIcon.classList.remove("active");
+    $(".nav-items").hide();
+    $(".hamburger-icon").removeClass("active");
   }
 
   nav.style.top = 0 + "px";

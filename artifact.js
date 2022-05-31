@@ -1,5 +1,7 @@
 $("#app").html(`<div class="loader"></div>`);
 
+
+
 $.ajax({
   type: "GET",
   url: "/artifact/artifact-1.html",
@@ -22,8 +24,9 @@ $.ajax({
 });
 
 if (window.location.hash) {
-  let newURL = window.location.hash.replace("/^#!\/$/i", "");
-  console.log(newURL);
+  let newURL = window.location.hash.replace("#!", "");
+  let baseURL = 'https://handmaids-tale-project.glitch.me/';
+  console.log(new URL(newURL), baseURL);
 } else {
   
 }
