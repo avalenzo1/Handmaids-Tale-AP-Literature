@@ -3,31 +3,33 @@ $(function(){
   
   function redirectPage() {
     if (window.location.hash) {
-      $("#app").html(`<div class="loader"></div>`);
+      $("#app").html(`<div style="text-align: center;"><div class="loader"></div></div>`);
       
-      let hashRegexPath = window.location.hash.replace("#!/app/", "");
-      let urlRedirect = new URL('https://handmaids-tale-project.glitch.me/' + hashRegexPath);
-      
-      $.ajax({
-        type: "GET",
-        url: urlRedirect,
-        dataType: "html",
-        error: function(xhr, status, error) {
-          $("#app").html(`
-            <div class="alert alert-warning">
-              <div class="alert-icon">
-                <i class="fa-solid fa-triangle-exclamation"></i>
+      if (window.location.hash.match(/#!\//i)) {
+        let hashRegexPath = window.location.hash.replace("#!/", "");
+        let urlRedirect = new URL('https://handmaids-tale-project.glitch.me/' + hashRegexPath);
+
+        $.ajax({
+          type: "GET",
+          url: urlRedirect,
+          dataType: "html",
+          error: function(xhr, status, error) {
+            $("#app").html(`
+              <div class="alert alert-warning">
+                <div class="alert-icon">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div class="alert-message">
+                  An Error Occured: ${xhr.responseText}
+                </div>
               </div>
-              <div class="alert-message">
-                An Error Occured: ${xhr.responseText}
-              </div>
-            </div>
-          `);
-        },
-        success: function (response) {
-          $("#app").html(response);
-        },
-      });
+            `);
+          },
+          success: function (response) {
+            $("#app").html(response);
+          },
+        }); 
+      }
     }
   }
 
