@@ -34,36 +34,36 @@ $(".nav-toggle").click(function (e) {
     $(".hamburger-icon").removeClass("active");
   }
 
-  nav.style.top = 0 + "px";
+  $(".nav").css("top", 0 + "px");
 });
 
-window.onscroll = function (e) {
-  this.dim = nav.getBoundingClientRect();
+$(window).scroll(function(e){
+  this.dim = $("#nav")[0].getBoundingClientRect();
 
-  nav.style.top = this.dim.top - (this.scrollY - this.oldScroll) + "px";
+  $("#nav").css("top", this.dim.top - (this.scrollY - this.oldScroll) + "px");
 
   if (this.oldScroll > this.scrollY) {
     if (this.dim.top >= 0) {
-      nav.style.top = 0 + "px";
+      $("#nav").css("top", 0 + "px");
     }
   } else {
     if (this.dim.top <= -this.dim.height) {
-      nav.style.top = -this.dim.height + "px";
+      $("#nav").css("top", -this.dim.height + "px");
     }
   }
 
   this.oldScroll = this.scrollY;
-};
+});
 
-window.onresize = function (e) {
+$(window).resize(function (e) {
   let w = document.body.clientWidth;
 
   if (w <= 600) {
-    nav.style.top = 0 + "px";
+    $("#nav").css("top", 0 + "px");
   } else {
-    navItems.style.display = "flex";
+    $(".nav-items").css("display", "flex");
   }
-};
+});
 
 class Ripple {
   constructor(button) {
