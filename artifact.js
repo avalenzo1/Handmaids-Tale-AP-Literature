@@ -26,7 +26,7 @@ $.ajax({
 if (window.location.hash) {
   let newURL = window.location.hash.replace("#!", "");
   let baseURL = 'https://handmaids-tale-project.glitch.me/';
-  console.log(new URL(newURL), baseURL);
+  console.log(new URL(newURL, baseURL));
 } else {
   
 }

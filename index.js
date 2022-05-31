@@ -1,8 +1,8 @@
 // https://support.glitch.com/t/tutorial-how-to-force-https/16669/2
 
-if (location.protocol != 'https:')
-{
- location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+if (location.protocol != "https:") {
+  location.href =
+    "https:" + window.location.href.substring(window.location.protocol.length);
 }
 
 let on;
@@ -25,44 +25,49 @@ if (navigator.userAgentData.mobile) {
   };
 }
 
-$(".nav-toggle").click(function (e) {
-  if ($(".nav-items").is(":hidden")) {
-    $(".nav-items").css("display", "flex");
-    $(".hamburger-icon").addClass("active");
-  } else {
-    $(".nav-items").hide();
-    $(".hamburger-icon").removeClass("active");
-  }
 
-  $(".nav").css("top", 0 + "px");
-});
+$(function(){
+  // navigation tools
+  
+  $(".nav-toggle").click(function (e) {
+    if ($(".nav-items").is(":hidden")) {
+      $(".nav-items").css("display", "flex");
+      $(".hamburger-icon").addClass("active");
+    } else {
+      $(".nav-items").hide();
+      $(".hamburger-icon").removeClass("active");
+    }
 
-$(window).scroll(function(e){
-  this.dim = $("#nav")[0].getBoundingClientRect();
+    $(".nav").css("top", 0 + "px");
+  });
 
-  $("#nav").css("top", this.dim.top - (this.scrollY - this.oldScroll) + "px");
+  $(window).scroll(function (e) {
+    this.dim = $("#nav")[0].getBoundingClientRect();
 
-  if (this.oldScroll > this.scrollY) {
-    if (this.dim.top >= 0) {
+    $("#nav").css("top", this.dim.top - (this.scrollY - this.oldScroll) + "px");
+
+    if (this.oldScroll > this.scrollY) {
+      if (this.dim.top >= 0) {
+        $("#nav").css("top", 0 + "px");
+      }
+    } else {
+      if (this.dim.top <= -this.dim.height) {
+        $("#nav").css("top", -this.dim.height + "px");
+      }
+    }
+
+    this.oldScroll = this.scrollY;
+  });
+
+  $(window).resize(function (e) {
+    let w = document.body.clientWidth;
+
+    if (w <= 600) {
       $("#nav").css("top", 0 + "px");
+    } else {
+      $(".nav-items").css("display", "flex");
     }
-  } else {
-    if (this.dim.top <= -this.dim.height) {
-      $("#nav").css("top", -this.dim.height + "px");
-    }
-  }
-
-  this.oldScroll = this.scrollY;
-});
-
-$(window).resize(function (e) {
-  let w = document.body.clientWidth;
-
-  if (w <= 600) {
-    $("#nav").css("top", 0 + "px");
-  } else {
-    $(".nav-items").css("display", "flex");
-  }
+  });
 });
 
 class Ripple {
@@ -73,7 +78,7 @@ class Ripple {
 
     if (this.rippleColor) {
       // https://stackoverflow.com/a/11371599/16557976  -- Thanks! 🙏
-      
+
       let css = `
         .ripple[ripple-hsl="[${this.rippleColor[0]}, ${this.rippleColor[1]}, ${this.rippleColor[2]}]"]:hover {
           background-color: hsla(${this.rippleColor[0]}, ${this.rippleColor[1]}%, ${this.rippleColor[2]}%,0.1) !important;
@@ -83,7 +88,7 @@ class Ripple {
           box-shadow: 0 0 0 1pt hsla(${this.rippleColor[0]}, ${this.rippleColor[1]}%, ${this.rippleColor[2]}%, 0.35) !important;
         }
       `;
-      
+
       let style = document.createElement("style");
 
       if (style.styleSheet) {
