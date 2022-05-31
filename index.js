@@ -243,13 +243,13 @@ let Scheme = (function () {
 
   colorSchemeButton.addEventListener("click", function () {
     if (colorSchemeInput.checked) {
+      setScheme("light");
       icon.classList.add("fa-moon");
       icon.classList.remove("fa-sun");
-      setScheme("light");
     } else {
+      setScheme("dark");
       icon.classList.remove("fa-moon");
       icon.classList.add("fa-sun");
-      setScheme("dark");
     }
   });
 

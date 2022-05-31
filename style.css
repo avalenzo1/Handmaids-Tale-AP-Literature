@@ -12,7 +12,7 @@
   --primary-color-hsl: 358.45, 74%, 41%;
 
   --gutter-x: 5%;
-  --gutter-y: 10px;
+  --gutter-y: 40px;
   
   --loader-length: 40px;
   --loader-diam: calc(var(--loader-length) * 0.1);
@@ -24,6 +24,10 @@ body {
   margin: 0;
   font-family: "Tiro Devanagari Sanskrit", serif;
   transition: background-color 0.2s;
+}
+
+.app {
+  background-color: hsla(var(--primary-color-hsl), 0.1);
 }
 
 .gutter-x {
@@ -247,8 +251,4 @@ label.colorSchemeButton {
 
 .alert-icon {
    font-size: x-large; 
-}
-
-.app {
-  background-color: hsla(var(--primary-color-hsl), 0.2);
 }

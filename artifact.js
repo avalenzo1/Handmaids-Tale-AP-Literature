@@ -1,8 +1,11 @@
+$("#app").hide();
+
 $(function(){
   // artifact
   
   function redirectPage() {
     if (window.location.hash) {
+      $("#app").show();
       $("#app").html(`<div style="text-align: center;"><div class="loader"></div></div>`);
       
       if (window.location.hash.match(/#!\//i)) {
