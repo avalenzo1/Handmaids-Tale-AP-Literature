@@ -88,7 +88,6 @@ body {
   position: relative;
   background-color: var(--bg-color);
   color: var(--text-color-secondary);
-  text-decoration: none;
   padding: 15px;
   display: block;
   cursor: pointer;

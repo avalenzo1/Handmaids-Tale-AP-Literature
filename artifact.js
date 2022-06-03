@@ -5,6 +5,7 @@ $(function(){
   
   function redirectPage() {
     if (window.location.hash) {
+      $("#heading-main").hide();
       $("#app").show();
       $("#app").html(`<div style="text-align: center;"><div class="loader"></div></div>`);
       
