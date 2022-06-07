@@ -102,15 +102,31 @@ class Ripple {
 
     this.rippleFadeDelay = 600;
 
-    this.button.addEventListener(agentOn.down, (e) => {
+    // desktop
+    
+    this.button.addEventListener("mousedown", (e) => {
       this.rippleEnter(e);
     });
 
-    this.button.addEventListener(agentOn.up, (e) => {
+    this.button.addEventListener("mouseup", (e) => {
       this.rippleLeave(e);
     });
 
-    this.button.addEventListener(agentOn.leave, (e) => {
+    this.button.addEventListener("mouseleave", (e) => {
+      this.rippleLeave(e);
+    });
+    
+    // touch
+    
+    this.button.addEventListener("touchstart", (e) => {
+      this.rippleEnter(e);
+    });
+
+    this.button.addEventListener("touchend", (e) => {
+      this.rippleLeave(e);
+    });
+
+    this.button.addEventListener("touchleave", (e) => {
       this.rippleLeave(e);
     });
   }

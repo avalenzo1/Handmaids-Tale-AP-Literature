@@ -206,9 +206,16 @@ label.colorSchemeButton {
 .eye-container .eye {
   width: 15px;
   height: 15px;
-  border: solid 1px;
+  border: solid 2px;
   border-radius: 75% 15%;
   transform: rotate(45deg);
+}
+
+.eye-container .eye .eye-iris {
+  width: 5px;
+  height: 5px;
+  border: solid 2px;
+  border-radius: 50%;
 }
 
 .loader {
