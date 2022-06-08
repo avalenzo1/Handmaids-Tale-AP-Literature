@@ -1,19 +1,16 @@
 <style>
-  blockquote::before {
-    content: "";
-    display: block;
-    width: 24px;
-    height: 24px;
-    background-image: url("https://pic.onlinewebfonts.com/svg/img_520853.png");
-    background-size: 100%;
-    background-repeat: no-repeat;
+  blockquote[speaker='Serena Joy'] {
+    background-color: #f0da0c30;
+  }
+  
+  blockquote[speaker='Private Citizen'] {
+    background-color: #e22b2b45;
   }
   
   blockquote::after {
     content: '-' attr(speaker);
     display: block;
     padding-top: 10px;
-    
     text-align: right;
   }
 </style>
