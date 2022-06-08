@@ -4,12 +4,11 @@ $(function () {
   // artifact
 
   function redirectPage() {
-    if (window.location.hash && !onIndex) {
+    if (window.location.hash) {
       if (window.location.hash.match(/#!\//i)) {
         let hashRegexPath = window.location.hash.replace("#!/", "");
 
         if (hashRegexPath !== "") {
-          $("#heading-main").hide();
           $("#app").show();
           $("#app").html(
             `<div style="text-align: center;"><div class="loader"></div></div>`
@@ -38,11 +37,14 @@ $(function () {
             `);
             },
             success: function (response) {
+              $(".banner").hide();
               $("#app").html(response);
               $(".nav-items a").removeClass("active");
               $(`.nav-items a[href="${window.location.hash}"]`).addClass("active");
             },
           });
+        } else {
+          $(".banner").show();
         }
       }
     }
