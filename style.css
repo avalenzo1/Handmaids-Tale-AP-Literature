@@ -227,12 +227,22 @@ label.colorSchemeButton {
 }
 
 .eye-container .eye-iris {
-  content: "";
   display: block;
   width: 5px;
   height: 5px;
   border: solid 2px;
   border-radius: 50%;
+}
+
+.eye-container .eye-ball.iris-center {
+  transform: none !important;
+}
+
+.eye-container .eye-ball.iris-center .eye-iris {
+  display: inline-block;
+  position: absolute;
+  left: 3px;
+  top: 3px;
 }
 
 .loader {

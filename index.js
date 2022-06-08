@@ -8,12 +8,18 @@ if (location.protocol != "https:") {
 $(function(){
   // navigation tools
   
-  
-  
   $(window).on('mousemove touchmove', (e) => {
     // code inspired from https://codepen.io/whipcat/pen/ExKPQqZ
     
     let eye = $('.eye-container .eye .eye-ball');
+    
+    $(".eye-ball").on('mouseenter touchenter', function() {
+      $(this).addClass('iris-center')
+    });
+    
+    $(".eye-ball").on('mouseleave touchend', function() {
+      $(this).removeClass('iris-center')
+    });
     
     this.x = (eye.offset().left) + (eye.width() / 2);
     this.y = (eye.offset().top) + (eye.height() / 2);
