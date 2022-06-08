@@ -32,8 +32,13 @@ $(function(){
   $(window).mousemove((e) => {
     // code inspired from https://dev.to/stackfindover/animated-eyes-follow-mouse-cursor-javascript-mouse-move-3n40
     
-    this.theta = Math.atan2(y,x);
-    $(".eye-container .eye .eye-iris").css("transform", `translateX(${this.x}px) translateY(${this.y}px)`);
+    let eye = $('.eye-container .eye .eye-ball');
+    
+    this.x = (eye.offset().left) + (eye.width() / 2);
+    this.y = (eye.offset().top) + (eye.height() / 2);
+    this.rad = Math.atan2(e.pageX - this.x, e.pageY - this.y);
+    this.rot = (this.rad * (180 / Math.PI) * -1) + 180;
+    $(".eye-container .eye .eye-ball").css("transform", `rotate(${this.rot}deg)`);
   });
   
   $(".nav-toggle").click(function (e) {

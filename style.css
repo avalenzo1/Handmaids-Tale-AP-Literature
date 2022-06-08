@@ -212,7 +212,9 @@ label.colorSchemeButton {
   overflow: hidden;
 }
 
-.eye-container .eye .eye-iris {
+.eye-container .eye-ball::after {
+  content: "";
+  display: block;
   width: 5px;
   height: 5px;
   border: solid 2px;
