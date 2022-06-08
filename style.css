@@ -11,6 +11,9 @@
 
   --primary-color: #b61b1f;
   --primary-color-hsl: 358.45, 74%, 41%;
+  
+  --handmaid-color-hsl: var(--primary-color-hsl);
+  --wife-color-hsl: 192, 64%, 18%;
 
   --gutter-x: 5%;
   --gutter-y: 40px;
