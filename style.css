@@ -117,7 +117,7 @@ hr {
 }
 
 .nav .nav-items .list-item.active {
-  outline: dotted 1px var(--primary-color);
+  outline: dotted 3px var(--text-color);
 }
 
 .nav .dropdown {

@@ -59,7 +59,19 @@ $(function(){
         $("#nav").css("top", 0 + "px");
       }
   });
-});ss Ripple {
+
+  /* $(window).resize(function (e) {
+    let w = document.body.clientWidth;
+
+    if (w <= 600) {
+      $("#nav").css("top", 0 + "px");
+    } else {
+      $(".nav-items").css("display", "flex");
+    }
+  }); */
+});
+
+class Ripple {
   constructor(button) {
     this.button = button;
 
