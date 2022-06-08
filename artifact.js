@@ -25,6 +25,7 @@ $(function () {
             url: urlRedirect,
             dataType: "html",
             error: function (xhr, status, error) {
+              $(".nav-items a").removeClass("active");
               $("#app").html(`
               <div class="alert alert-warning">
                 <div class="alert-icon">
@@ -38,7 +39,8 @@ $(function () {
             },
             success: function (response) {
               $("#app").html(response);
-              $("")
+              $(".nav-items a").removeClass("active");
+              $(`.nav-items a[href="${window.location.hash}"]`).addClass("active");
             },
           });
         }

@@ -116,6 +116,10 @@ hr {
   transition: 0.1s;
 }
 
+.nav .nav-items .list-item.active {
+  outline: dotted 3px var(--text-color);
+}
+
 .nav .dropdown {
   left: 0;
   right: 0;
