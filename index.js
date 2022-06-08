@@ -8,6 +8,8 @@ if (location.protocol != "https:") {
 $(function(){
   // navigation tools
   
+  
+  
   $(window).mousemove((e) => {
     // code inspired from https://codepen.io/whipcat/pen/ExKPQqZ
     

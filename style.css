@@ -5,7 +5,7 @@
 
 :root {
   --bg-color: #ffffff;
-  --nav-color: rgba(255,255,255,0.9);
+  --nav-color: rgba(255,255,255,0.5);
   --text-color: #000000;
   --text-color-hsl: 0, 0%, 0%;
   --text-color-secondary: #333333;
@@ -221,7 +221,12 @@ label.colorSchemeButton {
   overflow: hidden;
 }
 
-.eye-container .eye-ball::after {
+.eye-container .eye-ball {
+  width: 15px;
+  height: 15px;
+}
+
+.eye-container .eye-iris {
   content: "";
   display: block;
   width: 5px;
