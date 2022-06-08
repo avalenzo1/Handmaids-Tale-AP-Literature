@@ -10,7 +10,7 @@ $(function(){
   
   
   
-  $(window).mousemove((e) => {
+  $(window).on('mousemove touchmove', (e) => {
     // code inspired from https://codepen.io/whipcat/pen/ExKPQqZ
     
     let eye = $('.eye-container .eye .eye-ball');
