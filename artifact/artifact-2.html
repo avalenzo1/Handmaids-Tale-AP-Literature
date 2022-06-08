@@ -1,7 +1,20 @@
 <style>
-  blockquote .quote {
+  blockquote::before {
+    content: "";
+    display: block;
     width: 24px;
-    padding-bottom: 6p
+    height: 24px;
+    background-image: url("https://pic.onlinewebfonts.com/svg/img_520853.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+  
+  blockquote::after {
+    content: '-' attr(speaker);
+    display: block;
+    padding-top: 10px;
+    
+    text-align: right;
   }
 </style>
 
@@ -12,14 +25,11 @@
   
   <h3>What are your thoughts on the <a href="/#!/artifact-3.html">coup that happened last year?</a></h3>
   
-  <em>Serena Joy: </em>
-  <blockquote>
-    <img src='https://pic.onlinewebfonts.com/svg/img_520853.png' class="quote"><br>
+  <blockquote speaker="Serena Joy">
     As a tired american, I applaud the Republic of Gilead for taking things into their own hands.
   </blockquote>
   
-  <em>Citizen: </em>
-  <blockquote>
+  <blockquote speaker="Private Citizen">
     
   </blockquote>
   
@@ -27,13 +37,11 @@
   
   <h3>What do you expect for the future of the country?</h3>
   
-  <em>Serena Joy: </em>
-  <blockquote>  
+  <blockquote speaker="Serena Joy">
     
   </blockquote>
   
-  <em>Citizen: </em>
-  <blockquote>
+  <blockquote speaker="Private Citizen">
     
   </blockquote>
   
@@ -41,13 +49,11 @@
   
   <h3>Do you think the government changes are beneficial or detrimental to the future of the country?</h3>
   
-  <em>Serena Joy: </em>
-  <blockquote>  
-    
+  <blockquote speaker="Serena Joy">
+    As a tired american, I applaud the Republic of Gilead for taking things into their own hands.
   </blockquote>
-
-  <em>Citizen: </em>
-  <blockquote>
+  
+  <blockquote speaker="Private Citizen">
     
   </blockquote>
   
@@ -55,13 +61,11 @@
   
   <h3>The Republic of Gilead has recently setback women's rights. What are your thoughts?</h3>
   
-  <em>Serena Joy: </em>
-  <blockquote>  
-    
+  <blockquote speaker="Serena Joy">
+    As a tired american, I applaud the Republic of Gilead for taking things into their own hands.
   </blockquote>
   
-  <em>Citizen: </em>
-  <blockquote>
+  <blockquote speaker="Private Citizen">
     
   </blockquote>
   
@@ -69,13 +73,11 @@
   
   <h3>?</h3>
   
-  <em>Serena Joy: </em>
-  <blockquote>  
-    
+  <blockquote speaker="Serena Joy">
+    As a tired american, I applaud the Republic of Gilead for taking things into their own hands.
   </blockquote>
   
-  <em>Citizen: </em>
-  <blockquote>
+  <blockquote speaker="Private Citizen">
     
   </blockquote>
 </article>
