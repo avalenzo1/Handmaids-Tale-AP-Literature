@@ -5,27 +5,6 @@ if (location.protocol != "https:") {
     "https:" + window.location.href.substring(window.location.protocol.length);
 }
 
-let agentOn;
-
-if (navigator.userAgentData.mobile) {
-  agentOn = {
-    down: "touchstart",
-    up: "touchend",
-    move: "touchmove",
-    enter: "touchenter",
-    leave: "touchleave",
-  };
-} else {
-  agentOn = {
-    down: "mousedown",
-    up: "mouseup",
-    move: "mousemove",
-    enter: "mouseenter",
-    leave: "mouseleave",
-  };
-}
-
-
 $(function(){
   // navigation tools
   

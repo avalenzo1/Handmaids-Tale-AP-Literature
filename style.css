@@ -32,6 +32,11 @@ body {
   transition: background-color 0.2s;
 }
 
+hr {
+  border: none;
+  border-top: hsla(var(--text-color-hsl),0.2) solid 1px;
+}
+
 .app {
   background-color: hsla(var(--primary-color-hsl), 0.1);
   border: solid 1px hsla(var(--primary-color-hsl), 0.1);
