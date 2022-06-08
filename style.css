@@ -117,7 +117,7 @@ hr {
 }
 
 .nav .nav-items .list-item.active {
-  outline: dotted 3px var(--text-color);
+  outline: dotted 1px var(--primary-color);
 }
 
 .nav .dropdown {
@@ -276,6 +276,8 @@ label.colorSchemeButton {
   .nav {
     bottom: 0;
   }
+  
+  
 
   .nav .list-parent {
     flex-direction: column;
