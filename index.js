@@ -30,12 +30,12 @@ $(function(){
   // navigation tools
   
   $(window).mousemove((e) => {
-    // code inspired from https://dev.to/stackfindover/animated-eyes-follow-mouse-cursor-javascript-mouse-move-3n40
+    // code inspired from https://codepen.io/whipcat/pen/ExKPQqZ
     
     let eye = $('.eye-container .eye .eye-ball');
     
-    this.x = (eye[0].getBoundingClientRect().left) + (eye.outerWidth() / 2);
-    this.y = (eye[0].getBoundingClientRect().top) + (eye.outerHeight() / 2);
+    this.x = (eye.offset().left) + (eye.width() / 2);
+    this.y = (eye.offset().top) + (eye.height() / 2);
     this.rad = Math.atan2(e.pageX - this.x, e.pageY - this.y);
     this.rot = (this.rad * (180 / Math.PI) * -1) + 180;
     $(".eye-container .eye .eye-ball").css("transform", `rotate(${this.rot}deg)`);

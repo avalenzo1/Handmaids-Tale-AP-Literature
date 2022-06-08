@@ -1,5 +1,6 @@
 :root {
   --bg-color: #000000;
+  --text-color-hsl: 0, 0%, 100%;
   --nav-color: rgba(0,0,0,0.9);
   --text-color: #ffffff;
   --text-color-secondary: #ffffff;

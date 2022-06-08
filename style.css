@@ -7,6 +7,7 @@
   --bg-color: #ffffff;
   --nav-color: rgba(255,255,255,0.9);
   --text-color: #000000;
+  --text-color-hsl: 0, 0%, 0%;
   --text-color-secondary: #333333;
 
   --primary-color: #b61b1f;

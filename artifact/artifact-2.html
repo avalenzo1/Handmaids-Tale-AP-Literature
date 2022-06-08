@@ -1,21 +1,26 @@
 <style>
-  blockquote {
+  .article hr {
+    border: none;
+    border-top: hsla(var(--text-color-hsl),0.2) solid 1px;
+  }
+  
+  .article blockquote {
     padding: 25px;
   }
 
-  blockquote[speaker="Serena Joy"] {
+  .article blockquote[speaker="Serena Joy"] {
     background-color: hsla(var(--wife-color-hsl), 0.1);
     border: hsla(var(--wife-color-hsl), 0.2) 1px solid;
     border-radius: 5px;
   }
 
-  blockquote[speaker="Private Citizen"] {
+  .article blockquote[speaker="Private Citizen"] {
     background-color: hsla(var(--handmaid-color-hsl), 0.1);
     border: hsla(var(--handmaid-color-hsl), 0.2) 1px solid;
     border-radius: 5px;
   }
 
-  blockquote::after {
+  .article blockquote::after {
     content: "-" attr(speaker);
     display: block;
     padding-top: 10px;
@@ -23,7 +28,7 @@
   }
 </style>
 
-<article>
+<article class="article">
   <h2>
     Interview with Serena Joy, Popular Conservative Televangelist, and a Private
     Gilead Citizen.
@@ -73,8 +78,14 @@
     the bible, we're taught to respect and listen to our husband's needs.
   </blockquote>
 
-  <blockquote speaker="Private Citizen"></blockquote>
-    
+  <blockquote speaker="Private Citizen">
+    I am deeply fraught by our sudden loss of rights. It's unfortunate that
+    after so many years of development, trying to make the US equal, it was all
+    quickly undone in months. I lost my job, and now my friends and I cannot use
+    our own Compunumbers to buy food; it's rather excessive. Just talking about
+    this brings me at risk because of the suspension of the 1st amendment.
+  </blockquote>
+
   <hr />
 
   <h3>?</h3>
