@@ -4,7 +4,7 @@ $(function () {
   // artifact
 
   function redirectPage() {
-    if (window.location.hash) {
+    if (window.location.hash && !onIndex) {
       if (window.location.hash.match(/#!\//i)) {
         let hashRegexPath = window.location.hash.replace("#!/", "");
 

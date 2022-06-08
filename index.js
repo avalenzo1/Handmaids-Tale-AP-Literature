@@ -46,6 +46,12 @@ $(function(){
     this.oldScroll = this.scrollY;
   });
   
+  $(window).resize(function() {
+    if ($(this).width() > 600) {
+      $(".nav .nav-items").css('display', 'flex')
+    }
+  });
+  
   $(".nav-toggle").click(function (e) {
     if ($(".nav-items").is(":hidden")) {
       $(".nav-items").css("display", "flex");

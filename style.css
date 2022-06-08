@@ -264,6 +264,19 @@ label.colorSchemeButton {
   100% { transform: rotate(360deg); }
 }
 
+.alert {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 25px;
+  border: solid 1px var(--text-color);
+}
+
+.alert-warning {
+  background-color: hsla(var(--primary-color-hsl), 0.2);
+  border: solid 1px hsla(var(--primary-color-hsl), 0.3);
+}
+
 .alert-icon {
   font-size: x-large;
 }
