@@ -21,8 +21,8 @@
     Don't let the Wives <em>patronize</em> you;<br />
     You shan't take their words to heart.<br />
     Don’t let the Angels <em>frighten</em> you;<br />
-    Don’t let the Eyes <em>frighten</em> you;<br />
-    They only seek to blind the eyes of the enlightened.<br />
+    Don’t let the <span class="eyes">Eyes</span> <em>frighten</em> you;<br />
+    They only seek to blind the <span class="eyes">eyes</span> of the enlightened.<br />
     Don’t let the Guardians <em>deceive</em> you;<br />
     Don't let the Aunts <em>indoctrinate</em> you;<br />
     As they are false prophets.<br />
@@ -39,3 +39,13 @@
     Don't let those bastards grind you down.
   </p>
 </article>
+
+<script>
+  $(".eyes").mouseenter(function() {
+    $(".eye-container").css("color","red");
+  });
+  
+  $(".eyes").mouseleave(function() {
+    $(".eye-container").css("color","");
+  });
+</script>
