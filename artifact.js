@@ -16,7 +16,7 @@ $(function () {
 
           
           let urlRedirect = new URL(
-            "https://avalenzo1.github.io/Handmaids-Tale-AP-Literature/" + hashRegexPath
+            "https://avalenzo1.github.io/Handmaids-Tale-AP-Literature/artifact/" + hashRegexPath
           );
 
           $.ajax({
