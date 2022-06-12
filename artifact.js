@@ -16,7 +16,7 @@ $(function () {
 
           
           let urlRedirect = new URL(
-            "https://handmaids-tale-project.glitch.me/artifact/" + hashRegexPath
+            "https://avalenzo1.github.io/Handmaids-Tale-AP-Literature/" + hashRegexPath
           );
 
           $.ajax({
